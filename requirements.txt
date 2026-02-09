@@ -1,0 +1,7 @@
+torch
+numpy
+tqdm
+matplotlib
+xarray
+cartopy
+zarr>=2,<3
