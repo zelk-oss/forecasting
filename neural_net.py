@@ -73,8 +73,6 @@ class SelfAttentionLayer(torch.nn.Module):
             self,
             n_features: int = 512,
             n_heads: int = 8,
-            rope_max_l: int = 7,
-            rope_alpha: float = 1.0
     ) -> None:
         super().__init__()
         self.n_features = n_features
@@ -88,12 +86,7 @@ class SelfAttentionLayer(torch.nn.Module):
         )
         self.q_norm = torch.nn.RMSNorm(self.n_features_head)
         self.k_norm = torch.nn.RMSNorm(self.n_features_head)
-        self.rope_layer = SphericalRopeLayer(
-            n_features=n_features,
-            n_heads=n_heads,
-            max_l=rope_max_l,
-            alpha=rope_alpha
-        )
+        
         self.out_layer = torch.nn.Linear(
             n_features, n_features, bias=False
         )
@@ -158,8 +151,6 @@ class TransformerBlock(torch.nn.Module):
             n_heads: int = 8,
             n_embedding: int = 0,
             mult: int = 2,
-            rope_max_l: int = 9,
-            rope_alpha: float = 0.025,
     ) -> None:
         super().__init__()
         self.n_features = n_features
@@ -183,9 +174,7 @@ class TransformerBlock(torch.nn.Module):
 
         self.attn = SelfAttentionLayer(
             n_features=n_features,
-            n_heads=n_heads,
-            rope_max_l=rope_max_l,
-            rope_alpha=rope_alpha
+            n_heads=n_heads
         )
         self.ffn = MLPLayer(
             n_features=n_features,
@@ -297,13 +286,13 @@ class Head(torch.nn.Module):
         else:
             in_normed = self.in_norm(in_tensor)
         out_tensor = self.out_layer(in_normed)
+        # CHANGED: h=16, w=32 → h=32, w=32 (for 32×32 token grid after pooling)
         out_tensor = rearrange(
             out_tensor,
             "b (w h) (c w2 h2) -> b c (w w2) (h h2)",
-            h=16, w=32, h2=2, w2=2
+            h=32, w=32, h2=2, w2=2
         )
         return out_tensor
-
 
 # Time/lead-time conditioning.
 class RandomFourierEmbedding(torch.nn.Module):
@@ -339,15 +328,13 @@ class Transformer(torch.nn.Module):
     def __init__(
             self,
             token_downsample_factor: int = 8,
-            n_input: int = 7,
-            n_output: int = 7,
+            n_input: int = 1, # Only 1 variable for SQG 
+            n_output: int = 1, # Only 1 variable for SQG 
             n_features: int = 512,
             n_blocks: int = 8,
             n_heads: int = 8,
             n_embedding: int = 0,
             mult: int = 2,
-            rope_max_l: int = 9,
-            rope_alpha: float = 0.025,
             wave_length: float = 0.07,
     ) -> None:
         super().__init__()
@@ -368,8 +355,6 @@ class Transformer(torch.nn.Module):
                     n_heads=n_heads,
                     n_embedding=n_embedding,
                     mult=mult,
-                    rope_max_l=rope_max_l,
-                    rope_alpha=rope_alpha,
                 )
                 for _ in range(n_blocks)
             ]
@@ -418,7 +403,7 @@ class Transformer(torch.nn.Module):
 
 def get_net(
     n_input=1, n_output=1, n_blocks=8, n_features=512, n_heads=8,
-    mult=2, rope_max_l=9, rope_alpha=0.025,
+    mult=2,
     n_embedding=0, wave_length=0.07,
     device=None, dtype=torch.float32
 ):
@@ -426,7 +411,7 @@ def get_net(
     transformer = Transformer(
         n_input=n_input, n_output=n_output, n_blocks=n_blocks,
         n_features=n_features, n_heads=n_heads,
-        mult=mult, rope_max_l=rope_max_l, rope_alpha=rope_alpha,
+        mult=mult,
         n_embedding=n_embedding, wave_length=wave_length,
     )
     if device is None:
