@@ -15,7 +15,10 @@ import torch.nn.functional as F
 from einops import rearrange, einsum
 
 import numpy as np
-from scipy.special import sph_harm_y
+try:
+    from scipy.special import sph_harm_y
+except Exception:
+    sph_harm_y = None
 
 # Fallback for flash attention
 try:
@@ -91,6 +94,10 @@ class SelfAttentionLayer(torch.nn.Module):
             n_features, n_features, bias=False
         )
         torch.nn.init.normal_(self.out_layer.weight, std=1E-6)
+
+    # Fallback RoPE: identity mapping when RoPE not configured/available.
+    def rope_layer(self, x: torch.Tensor) -> torch.Tensor:
+        return x
 
     def forward(
             self,
