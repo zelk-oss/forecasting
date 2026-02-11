@@ -48,7 +48,13 @@ train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_w
 val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_workers=0)
 
 # Build model + optimizer
-model = get_net(n_input=1, n_output=1, n_blocks=n_layers, n_features=n_features, device=device, dtype=dtype)
+model = get_net(
+    token_downsample_factor=1,  # This will give you 512×512 output
+    n_features=64,  # Or whatever you want for your new training
+    n_blocks=8,     # Or however many blocks you want
+    device=device,
+    dtype=dtype
+)
 optim = torch.optim.Adam(model.parameters(), lr=lr)
 
 # Training loop: one epoch
