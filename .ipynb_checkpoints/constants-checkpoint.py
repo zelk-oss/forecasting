@@ -1,18 +1,18 @@
+"""
+Constants obtained from compute_norms.py which reads dataset 
+"""
 import torch
 
 
 __all__ = ["in_mean", "in_std", "res_mean", "res_std", "weights_lat"]
 
 
-in_mean = torch.tensor([55508.282441,281.117870,0.003168,14.505203,-0.043664,287.388006,0.000728])[:, None, None]
-in_std = torch.tensor([2728.556341,12.240092,0.002550,17.783869,12.363526,15.208583,0.001348])[:, None, None]
-res_mean = torch.tensor([0.002414,0.000011,0.000000,-0.000041,0.000005,0.000020,0.000000])[:, None, None]
-res_std = torch.tensor([213.410905,1.165583,0.000497,3.851449,5.196615,2.521460,0.000860])[:, None, None]
-weights_lat = torch.tensor([
-    0.077044, 0.230391, 0.381519, 0.528973, 0.671332, 0.807226,
-    0.935347, 1.054459, 1.163416, 1.261169, 1.346776, 1.419413,
-    1.47838 , 1.52311 , 1.553171, 1.568274, 1.568274, 1.553171,
-    1.52311 , 1.47838 , 1.419413, 1.346776, 1.261169, 1.163416,
-    1.054459, 0.935347, 0.807226, 0.671332, 0.528973, 0.381519,
-    0.230391, 0.077044
-])
+# Normalisation constants for the doubly-periodic single-channel dataset
+in_mean = torch.tensor([-0.000000])[:, None, None]
+in_std  = torch.tensor([0.316150])[:, None, None]
+res_mean= torch.tensor([-0.000000])[:, None, None]
+res_std = torch.tensor([0.161085])[:, None, None]
+# Dataset is now doubly-periodic and no latitude-longitude reweighting
+# is required for training. Use scalar unity so losses remain unchanged
+# but broadcasting is trivial in the training loop.
+weights_lat = torch.tensor(1.0)
