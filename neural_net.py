@@ -253,10 +253,12 @@ class Head(torch.nn.Module):
             n_features: int,
             n_output: int,
             n_embedding: int = 0,
+            token_downsample_factor: int = 8,  # added this 
     ) -> None:
         super().__init__()
         self.n_features = n_features
         self.n_output = n_output
+        self.token_grid_size = 256 // token_downsample_factor
 
         if n_embedding > 0:
             self.gate_layer = torch.nn.Linear(
@@ -297,7 +299,9 @@ class Head(torch.nn.Module):
         out_tensor = rearrange(
             out_tensor,
             "b (w h) (c w2 h2) -> b c (w w2) (h h2)",
-            h=32, w=32, h2=2, w2=2
+            h=self.token_grid_size,  # CHANGEED FROM h=32
+            w=self.token_grid_size, 
+            h2=2, w2=2
         )
         return out_tensor
 
@@ -370,6 +374,7 @@ class Transformer(torch.nn.Module):
             n_features=n_features,
             n_output=n_output,
             n_embedding=n_embedding,
+            token_downsample_factor=token_downsample_factor,
         )
         if n_embedding > 0:
             # Define embedding
@@ -412,6 +417,7 @@ def get_net(
     n_input=1, n_output=1, n_blocks=8, n_features=512, n_heads=8,
     mult=2,
     n_embedding=0, wave_length=0.07,
+    token_downsample_factor=8, 
     device=None, dtype=torch.float32
 ):
     # More flexibility than with torch.nn.sequential
@@ -420,6 +426,7 @@ def get_net(
         n_features=n_features, n_heads=n_heads,
         mult=mult,
         n_embedding=n_embedding, wave_length=wave_length,
+        token_downsample_factor=token_downsample_factor,
     )
     if device is None:
         device = torch.device("cpu")
