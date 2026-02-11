@@ -60,7 +60,13 @@ for epoch in range(n_epochs):
         data_in, data_target = batch.split((1, 1), dim=1)  # single-channel
         optim.zero_grad()
         pred = model(data_in)
-        loss = (weights_lat * (pred - data_target).pow(2)).mean()
+        # Model outputs a lower-resolution field (tokens/pooled).
+        # Downsample the high-resolution target to the prediction resolution
+        if pred.shape[-2:] != data_target.shape[-2:]:
+            data_target_ds = torch.nn.functional.adaptive_avg_pool2d(data_target, output_size=pred.shape[-2:])
+        else:
+            data_target_ds = data_target
+        loss = (weights_lat * (pred - data_target_ds).pow(2)).mean()
         loss.backward()
         optim.step()
         running_loss += loss.item()
@@ -76,7 +82,11 @@ with torch.no_grad():
         batch = batch.to(device=device, dtype=dtype)
         data_in, data_target = batch.split((1, 1), dim=1)
         pred = model(data_in)
-        per_sample_mse = (weights_lat * (pred - data_target).pow(2)).mean(dim=(1,2,3))
+        if pred.shape[-2:] != data_target.shape[-2:]:
+            data_target_ds = torch.nn.functional.adaptive_avg_pool2d(data_target, output_size=pred.shape[-2:])
+        else:
+            data_target_ds = data_target
+        per_sample_mse = (weights_lat * (pred - data_target_ds).pow(2)).mean(dim=(1,2,3))
         mse_sum += per_sample_mse.sum().item()
         n_samples += per_sample_mse.shape[0]
 
