@@ -31,9 +31,9 @@ val = da.isel(time=slice(train_end, val_end))
 test = da.isel(time=slice(val_end, None))
 
 # Convert to dataset and rename variable to 'geopotential' for compatibility
-train_ds = train.to_dataset(name='geopotential')
-val_ds = val.to_dataset(name='geopotential')
-test_ds = test.to_dataset(name='geopotential')
+train_ds = train.to_dataset(name='q')
+val_ds = val.to_dataset(name='q')
+test_ds = test.to_dataset(name='q')
 
 # Ensure var_name coordinate is a list of strings to avoid zarr encoding issues
 if 'var_name' in train_ds.coords:
