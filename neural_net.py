@@ -68,7 +68,7 @@ def self_attention(
         return attn_out.transpose(1, 2)
 
 
-# self attention layer 
+# self attention layer: each token looks at all others 
 # Standard multi-head attention with RoPE and RMSNorm.
 # REPLACED SelfAttentionLayer with periodic-friendly RoPE or absolute positional embeddings
 class SelfAttentionLayer(torch.nn.Module):
@@ -124,6 +124,7 @@ class SelfAttentionLayer(torch.nn.Module):
         return self.out_layer(out)
 
 
+# Multi Layer Perceptron: nonlinear processing of each token 
 # feed-forward block with gating 
 class MLPLayer(torch.nn.Module):
     def __init__(
@@ -194,6 +195,7 @@ class TransformerBlock(torch.nn.Module):
             embedding: torch.Tensor | None = None
     ) -> torch.Tensor:
         # Apply gating from embedding
+        # Time controls how much each operation matters
         if self.gate_layer is not None:
             gate_tensor = self.gate_layer(embedding).unsqueeze(1)
             gate_attn, gate_ffn = gate_tensor.chunk(2, dim=-1)
@@ -247,6 +249,9 @@ class Tokenizer(torch.nn.Module):
 
 
 # Reconstructs 2D output from tokens.
+# takes the N=32x32 processed tokens 
+# upsamples back to the spatial field 
+# outcome is the predicted velocity 
 class Head(torch.nn.Module):
     def __init__(
             self,
