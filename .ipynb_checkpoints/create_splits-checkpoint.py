@@ -24,8 +24,9 @@ da = ds[varname]
 
 # Determine split indices (first 80% train, next 10% val, rest test)
 nt = da.sizes['time']
-train_end = int(nt * 0.8)
-val_end = train_end + int(nt * 0.1)
+train_end = int(nt * 0.2)
+#val_end = train_end + int(nt * 0.1)
+val_end = int(nt * 0.2) + int(nt * 0.1)
 
 print('nt, train_end, val_end:', nt, train_end, val_end)
 
@@ -64,8 +65,8 @@ for ds_out in (train_ds, val_ds, test_ds):
             del ds_out.encoding[k]
 
 # write to zarr
-train_ds.to_zarr(os.path.join(out_dir, 'sqg_train.zarr'), mode='w')
-val_ds.to_zarr(os.path.join(out_dir, 'sqg_val.zarr'), mode='w')
-test_ds.to_zarr(os.path.join(out_dir, 'sqg_test.zarr'), mode='w')
+train_ds.to_zarr(os.path.join(out_dir, 'sqg_train_small.zarr'), mode='w')
+#val_ds.to_zarr(os.path.join(out_dir, 'sqg_val.zarr'), mode='w')
+#test_ds.to_zarr(os.path.join(out_dir, 'sqg_test.zarr'), mode='w')
 
 print('Wrote ../data/sqg_train.zarr, ../data/sqg_val.zarr, ../data/sqg_test.zarr')
