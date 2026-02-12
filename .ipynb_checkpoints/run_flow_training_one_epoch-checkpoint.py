@@ -12,7 +12,7 @@ from constants import in_mean, in_std, res_mean, res_std, weights_lat
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 dtype = torch.float32         # use float32 for portability; change to torch.bfloat16 if your GPU supports it
 batch_size = 4                # small to avoid OOM; raise if memory allows
-n_epochs = 1
+n_epochs = 3
 n_layers = 2
 n_features = 64
 lr = 1e-3
@@ -26,7 +26,7 @@ weights_lat = weights_lat.to(device=device, dtype=dtype)
 
 
 # Load small dataset (uses parent ../data)
-train_zarr = "../data/sqg_train_small.zarr"
+train_zarr = "../data/sqg_train.zarr"
 val_zarr = "../data/sqg_val.zarr"
 
 ds_train = xr.open_zarr(train_zarr)["q"].compute(num_workers=4)
@@ -50,10 +50,11 @@ val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_work
 
 # --- transformer full-resolution instantiation (token_downsample_factor=1 -> full 512x512 output)
 n_features = 64          # pick 64 or 128 to fit GPU memory for full-res
-n_blocks = 2
+n_blocks = 4
 n_heads = 8
 token_downsample_factor = 1
 
+# instantiate the model 
 model = get_net(
     n_input=1,
     n_output=1,
@@ -65,7 +66,6 @@ model = get_net(
     device=device,
     dtype=dtype
 ).to(device)
-
 optim = torch.optim.Adam(model.parameters(), lr=lr)
 
 # Training loop: one epoch
