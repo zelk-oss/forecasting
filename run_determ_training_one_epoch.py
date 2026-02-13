@@ -6,23 +6,26 @@ from torch.utils.data import DataLoader
 import xarray as xr
 
 from neural_net import get_net
-from constants import in_mean, in_std, res_mean, res_std, weights_lat
+from constants import in_mean, in_std, res_mean, res_std
 
 # Settings (tune for server)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 dtype = torch.float32         # use float32 for portability; change to torch.bfloat16 if your GPU supports it
-batch_size = 8                # small to avoid OOM; raise if memory allows
-n_epochs = 1
-n_layers = 2
-n_features = 64
+batch_size = 64            # small to avoid OOM; raise if memory allows
+n_epochs = 20
 lr = 1e-3
 
+# net parameters 
+n_features=128
+n_blocks=4
+n_heads=8
+token_downsample_factor=8
+
 # Prepare constants on device/dtype
-in_mean = in_mean.to(device=device, dtype=dtype)
-in_std = in_std.to(device=device, dtype=dtype)
-res_mean = res_mean.to(device=device, dtype=dtype)
-res_std = res_std.to(device=device, dtype=dtype)
-weights_lat = torch.as_tensor(weights_lat, device=device, dtype=dtype).squeeze()
+in_mean = in_mean.to(dtype=dtype)
+in_std = in_std.to(dtype=dtype)
+res_mean = res_mean.to(dtype=dtype)
+res_std = res_std.to(dtype=dtype)
 
 # Load small dataset (uses parent ../data)
 train_zarr = "../data/sqg_train.zarr"
@@ -32,8 +35,8 @@ ds_train = xr.open_zarr(train_zarr)["q"].compute(num_workers=4)
 ds_val = xr.open_zarr(val_zarr)["q"].compute(num_workers=4)
 
 # Build normalized torch arrays: (time, channel, H, W)
-train_vals = torch.as_tensor(ds_train.values, dtype=dtype, device=device)
-val_vals   = torch.as_tensor(ds_val.values,   dtype=dtype, device=device)
+train_vals = torch.as_tensor(ds_train.values, dtype=dtype)
+val_vals   = torch.as_tensor(ds_val.values,   dtype=dtype)
 
 train_in  = (train_vals[:-1] - in_mean) / in_std
 train_res = (train_vals[1:] - train_vals[:-1] - res_mean) / res_std
@@ -49,9 +52,13 @@ val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_work
 
 # Build model + optimizer
 model = get_net(
-    token_downsample_factor=1,  # This will give you 512×512 output
-    n_features=64,  # Or whatever you want for your new training
-    n_blocks=8,     # Or however many blocks you want
+    n_input=1,
+    n_output=1,
+    n_features=n_features,
+    n_blocks=n_blocks,
+    n_heads=n_heads,
+    mult=2,
+    token_downsample_factor=token_downsample_factor,
     device=device,
     dtype=dtype
 )
@@ -66,13 +73,18 @@ for epoch in range(n_epochs):
         data_in, data_target = batch.split((1, 1), dim=1)  # single-channel
         optim.zero_grad()
         pred = model(data_in)
-        loss = (weights_lat * (pred - data_target).pow(2)).mean()
+        # downsample the target if the trained model is downsampled 
+        if pred.shape[-1] != data_target.shape[-1]:
+            factor = data_target.shape[-1] // pred.shape[-1]
+            data_target = torch.nn.functional.avg_pool2d(data_target, factor)
+        loss = ((pred - data_target).pow(2)).mean()
         loss.backward()
         optim.step()
         running_loss += loss.item()
-        if (i + 1) % 10 == 0:
+        if (i + 1) % 2 == 0:
             print(f"epoch {epoch+1} step {i+1}/{len(train_loader)} loss {running_loss / (i+1):.6f}")
 
+    
 # quick validation pass
 model.eval()
 mse_sum = 0.0
@@ -82,7 +94,11 @@ with torch.no_grad():
         batch = batch.to(device=device, dtype=dtype)
         data_in, data_target = batch.split((1, 1), dim=1)
         pred = model(data_in)
-        per_sample_mse = (weights_lat * (pred - data_target).pow(2)).mean(dim=(1,2,3))
+        # downsample the target if the trained model is downsampled 
+        if pred.shape[-1] != data_target.shape[-1]:
+            factor = data_target.shape[-1] // pred.shape[-1]
+            data_target = torch.nn.functional.avg_pool2d(data_target, factor)
+        per_sample_mse = ((pred - data_target).pow(2)).mean(dim=(1,2,3))
         mse_sum += per_sample_mse.sum().item()
         n_samples += per_sample_mse.shape[0]
 
@@ -90,6 +106,19 @@ val_mse = mse_sum / n_samples if n_samples else float("inf")
 print("Validation MSE:", val_mse)
 
 # save a checkpoint (CPU copy)
-state_dict = model.cpu().state_dict()
-torch.save(state_dict, os.path.join("..", "data", "best_model_test.ckpt"))
-print("Saved checkpoint to ../data/best_model_test.ckpt")
+ckpt = {
+    "model_state_dict": model.state_dict(),
+    "optimizer_state_dict": optim.state_dict(),
+    "config": {
+        "n_input": 1,
+        "n_output": 1,
+        "n_features": n_features,
+        "n_blocks": n_blocks,
+        "n_heads": n_heads,
+        "mult": 2,
+        "token_downsample_factor": token_downsample_factor
+    }
+}
+torch.save(ckpt, os.path.join("..", "data", "best_detmodel_test.ckpt"))
+
+print("Saved checkpoint to ../data/best_detmodel_test.ckpt")

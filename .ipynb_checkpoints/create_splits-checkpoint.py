@@ -4,7 +4,7 @@ Takes the whole dataset and splits it into train, test and validate
 import xarray as xr
 import os
 
-src = "../data/simu_pyqg_512_3.zarr"
+src = "../data/simu_pyqg_512_3_second_run.zarr"
 out_dir = "../data"
 os.makedirs(out_dir, exist_ok=True)
 

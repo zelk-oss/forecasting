@@ -53,7 +53,7 @@ val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_work
 n_features = 64          # pick 64 or 128 to fit GPU memory for full-res
 n_blocks = 4
 n_heads = 8 # Each attention layer splits into 8 parallel attention mechanisms
-token_downsample_factor = 2
+token_downsample_factor = 8
 
 # instantiate the model 
 model = get_net(
