@@ -12,10 +12,10 @@ from constants import in_mean, in_std, res_mean, res_std, weights_lat
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 dtype = torch.float32         # use float32 for portability; change to torch.bfloat16 if your GPU supports it
 # stack of 4 attention+MLP layers 
-batch_size = 8                # small to avoid OOM; raise if memory allows
-n_epochs = 4
+batch_size = 64             # small to avoid OOM; raise if memory allows
+n_epochs = 12
 n_layers = 2 # cosa sono i layer? 
-n_features = 64 # each one of the N=256x256 tokens is a 64-dimensional vector 
+n_features = 128 # each one of the N=256x256 tokens is a 64-dimensional vector 
 lr = 1e-3
 
 # --- cast normalization constants to device/dtype
@@ -53,7 +53,7 @@ val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_work
 n_features = 64          # pick 64 or 128 to fit GPU memory for full-res
 n_blocks = 4
 n_heads = 8 # Each attention layer splits into 8 parallel attention mechanisms
-token_downsample_factor = 1
+token_downsample_factor = 2
 
 # instantiate the model 
 model = get_net(
