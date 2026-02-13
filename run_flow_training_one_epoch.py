@@ -12,9 +12,9 @@ from constants import in_mean, in_std, res_mean, res_std, weights_lat
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 dtype = torch.float32         # use float32 for portability; change to torch.bfloat16 if your GPU supports it
 # stack of 4 attention+MLP layers 
-batch_size = 4                # small to avoid OOM; raise if memory allows
-n_epochs = 3
-n_layers = 2
+batch_size = 8                # small to avoid OOM; raise if memory allows
+n_epochs = 4
+n_layers = 2 # cosa sono i layer? 
 n_features = 64 # each one of the N=256x256 tokens is a 64-dimensional vector 
 lr = 1e-3
 

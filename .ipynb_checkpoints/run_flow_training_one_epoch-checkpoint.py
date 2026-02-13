@@ -11,10 +11,11 @@ from constants import in_mean, in_std, res_mean, res_std, weights_lat
 # Settings (tune for server)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 dtype = torch.float32         # use float32 for portability; change to torch.bfloat16 if your GPU supports it
-batch_size = 4                # small to avoid OOM; raise if memory allows
-n_epochs = 3
-n_layers = 2
-n_features = 64
+# stack of 4 attention+MLP layers 
+batch_size = 8                # small to avoid OOM; raise if memory allows
+n_epochs = 4
+n_layers = 2 # cosa sono i layer? 
+n_features = 64 # each one of the N=256x256 tokens is a 64-dimensional vector 
 lr = 1e-3
 
 # --- cast normalization constants to device/dtype
@@ -51,7 +52,7 @@ val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_work
 # --- transformer full-resolution instantiation (token_downsample_factor=1 -> full 512x512 output)
 n_features = 64          # pick 64 or 128 to fit GPU memory for full-res
 n_blocks = 4
-n_heads = 8
+n_heads = 8 # Each attention layer splits into 8 parallel attention mechanisms
 token_downsample_factor = 1
 
 # instantiate the model 
@@ -74,6 +75,8 @@ for epoch in range(n_epochs):
     running_loss = 0.0
     for i, batch in enumerate(train_loader):
         batch = batch.to(device=device, dtype=dtype)
+        # training loop 
+        # this the loop for a deterministic model 
         data_in, data_target = batch.split((1, 1), dim=1)  # single-channel
         optim.zero_grad()
         pred = model(data_in)  # expect (B, 1, 512, 512)
@@ -84,7 +87,7 @@ for epoch in range(n_epochs):
         if (i + 1) % 10 == 0:
             print(f"epoch {epoch+1} step {i+1}/{len(train_loader)} loss {running_loss / (i+1):.6f}")
 
-# quick validation pass
+# validation step 
 model.eval()
 mse_sum = 0.0
 n_samples = 0
@@ -93,12 +96,14 @@ with torch.no_grad():
         batch = batch.to(device=device, dtype=dtype)
         data_in, data_target = batch.split((1, 1), dim=1)
         pred = model(data_in)
-        per_sample_mse = (weights_lat * (pred - data_target).pow(2)).mean(dim=(1,2,3))
+        per_sample_mse = ((pred - data_target).pow(2)).mean(dim=(1,2,3))
         mse_sum += per_sample_mse.sum().item()
         n_samples += per_sample_mse.shape[0]
 
 val_mse = mse_sum / n_samples if n_samples else float("inf")
 print("Validation MSE:", val_mse)
+# Check if your model generalizes to unseen data. 
+# If val_mse ≈ train_loss, good. If val_mse >> train_loss, overfitting.
 
 # save a checkpoint (CPU copy)
 ckpt = {
