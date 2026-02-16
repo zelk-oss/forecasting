@@ -6,7 +6,7 @@ import xarray as xr
 import numpy as np
 import torch
 
-ds = xr.open_zarr("../data/simu_pyqg_512_3_second_run.zarr")["q"].drop_vars("time")
+ds = xr.open_zarr("../data/simu_pyqg_512_3_sr.zarr")["q"].drop_vars("time")
 ds_in = ds[:-1]
 ds_res = ds[1:] - ds[:-1]
 
