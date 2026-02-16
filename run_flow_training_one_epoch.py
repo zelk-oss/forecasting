@@ -14,7 +14,7 @@ dtype = torch.float32         # use float32 for portability; change to torch.bfl
 # stack of 4 attention+MLP layers 
 batch_size = 64             # small to avoid OOM; raise if memory allows
 n_epochs = 12
-n_layers = 2 # cosa sono i layer? 
+n_layers = 2 # cosa sono i layer? == BLOCKS 
 n_features = 128 # each one of the N=256x256 tokens is a 64-dimensional vector 
 lr = 1e-3
 
