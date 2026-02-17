@@ -12,13 +12,14 @@ from constants import in_mean, in_std, res_mean, res_std
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 dtype = torch.float32         # use float32 for portability; change to torch.bfloat16 if your GPU supports it
 batch_size = 64            # small to avoid OOM; raise if memory allows
-n_epochs = 20
+n_epochs = 12
 lr = 1e-3
 
 # net parameters 
-n_features=128
+n_features=64
 n_blocks=4
 n_heads=8
+n_embedding = 64
 token_downsample_factor=8
 
 # Prepare constants on device/dtype
@@ -58,6 +59,7 @@ model = get_net(
     n_blocks=n_blocks,
     n_heads=n_heads,
     mult=2,
+    n_embedding = n_embedding, 
     token_downsample_factor=token_downsample_factor,
     device=device,
     dtype=dtype
@@ -116,6 +118,7 @@ ckpt = {
         "n_blocks": n_blocks,
         "n_heads": n_heads,
         "mult": 2,
+        "n_embedding": n_embedding, 
         "token_downsample_factor": token_downsample_factor
     }
 }
