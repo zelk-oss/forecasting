@@ -7,7 +7,7 @@
 
 # System modules
 import logging
-import math
+import math 
 from typing import Tuple
 
 # External modules
@@ -16,10 +16,6 @@ import torch.nn.functional as F
 from einops import rearrange, einsum
 
 import numpy as np
-try:
-    from scipy.special import sph_harm_y
-except Exception:
-    sph_harm_y = None
 
 # Fallback for flash attention
 try:
@@ -115,7 +111,6 @@ class SelfAttentionLayer(torch.nn.Module):
         q_proj = self.q_norm(q_proj)
         k_proj = self.k_norm(k_proj)
 
-        # Apply spherical RoPE
         q_proj = self.rope_layer(q_proj)
         k_proj = self.rope_layer(k_proj)
 
@@ -250,8 +245,6 @@ class Tokenizer(torch.nn.Module):
 
 
 # Reconstructs 2D output from tokens.
-# takes the N=32x32 processed tokens 
-# upsamples back to the spatial field 
 # outcome is the predicted velocity 
 class Head(torch.nn.Module):
     def __init__(
@@ -259,13 +252,10 @@ class Head(torch.nn.Module):
             n_features: int,
             n_output: int,
             n_embedding: int = 0,
-            token_downsample_factor: int = 8,  # added this 
     ) -> None:
         super().__init__()
         self.n_features = n_features
         self.n_output = n_output
-        self.token_downsample_factor = token_downsample_factor
-        # Note: token_grid_size is calculated dynamically in forward pass
 
         if n_embedding > 0:
             self.gate_layer = torch.nn.Linear(
@@ -294,8 +284,7 @@ class Head(torch.nn.Module):
     def forward(
             self,
             in_tensor: torch.Tensor,
-            embedding: torch.Tensor | None = None,
-            token_grid_size: int | None = None
+            embedding: torch.Tensor | None = None
     ) -> torch.Tensor:
         if self.gate_layer is not None:
             gate_tensor = self.gate_layer(embedding).unsqueeze(1)
@@ -352,7 +341,6 @@ class RandomFourierEmbedding(torch.nn.Module):
 class Transformer(torch.nn.Module):
     def __init__(
             self,
-            token_downsample_factor: int = 8,
             n_input: int = 1, # Only 1 variable for SQG 
             n_output: int = 1, # Only 1 variable for SQG 
             n_features: int = 512,
@@ -363,17 +351,11 @@ class Transformer(torch.nn.Module):
             wave_length: float = 0.07,
     ) -> None:
         super().__init__()
-        self.token_downsample_factor = token_downsample_factor
         self.tokenizer = Tokenizer(
             n_channels=n_input,
             n_features=n_features,
         )
-        # NEW: after tokenizing 512×512 → 256×256 tokens,
-        # further reduce to 32×32
-        self.token_pool = torch.nn.AvgPool2d(
-            kernel_size=token_downsample_factor, 
-            stride=token_downsample_factor
-        )
+
         self.blocks = torch.nn.ModuleList(
             [
                 TransformerBlock(
@@ -389,7 +371,6 @@ class Transformer(torch.nn.Module):
             n_features=n_features,
             n_output=n_output,
             n_embedding=n_embedding,
-            token_downsample_factor=token_downsample_factor,
         )
         if n_embedding > 0:
             # Define embedding
@@ -399,7 +380,6 @@ class Transformer(torch.nn.Module):
         else:
             self.embedding_layer = None
 
-    # NEW: changing this to agree with downsampling operation 
     def forward(
             self,
             in_tensor: torch.Tensor,
@@ -413,22 +393,11 @@ class Transformer(torch.nn.Module):
         # Tokenize: (B, C, H, W) -> (B, H/2, W/2, n_features) then (B, (H/2)*(W/2), n_features)
         tokens = self.tokenizer(in_tensor)  # shape: (B, (H/2)*(W/2), n_features)
         
-        # Dynamically calculate grid size from token sequence length
-        B, token_seq_len, C = tokens.shape
-        token_grid_size = int(math.sqrt(token_seq_len))
-        
-        # Reshape to 2D, pool, reshape back to sequence
-        tokens_2d = tokens.reshape(B, token_grid_size, token_grid_size, C).permute(0, 3, 1, 2)  # (B, C, grid_size, grid_size)
-        tokens_2d = self.token_pool(tokens_2d)  # (B, C, grid_size//8, grid_size//8)
-        tokens = tokens_2d.permute(0, 2, 3, 1).reshape(B, -1, C)  # (B, (grid_size//8)^2, C)
-        
         # Transformer blocks
         for block in self.blocks:
             tokens = block(tokens, embedding)
         
-        # Head expects (B, (grid_size//8)^2, C) and outputs (B, n_output, H_out, W_out)
-        # Pass token_grid_size//8 to Head for correct reshaping
-        out_tensor = self.head(tokens, embedding, token_grid_size=token_grid_size // self.token_downsample_factor)
+        out_tensor = self.head(tokens, embedding)
         return out_tensor
 
 
@@ -436,7 +405,6 @@ def get_net(
     n_input=1, n_output=1, n_blocks=8, n_features=512, n_heads=8,
     mult=2,
     n_embedding=0, wave_length=0.07,
-    token_downsample_factor=8, 
     device=None, dtype=torch.float32
 ):
     # More flexibility than with torch.nn.sequential
@@ -445,7 +413,6 @@ def get_net(
         n_features=n_features, n_heads=n_heads,
         mult=mult,
         n_embedding=n_embedding, wave_length=wave_length,
-        token_downsample_factor=token_downsample_factor,
     )
     if device is None:
         device = torch.device("cpu")
