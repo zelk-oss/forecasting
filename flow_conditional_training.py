@@ -19,13 +19,12 @@ dtype = torch.float32
 
 # PARAMS 
 batch_size = 64
-n_epochs = 12
+n_epochs = 1
 n_features = 64
 lr = 1e-3
 n_blocks = 4
 n_heads = 8
-token_downsample_factor = 8
-n_embedding = 64    
+n_embedding = 32    
 wave_length = 0.07  
 
 # Cast normalization constants to device/dtype
@@ -37,16 +36,19 @@ weights_lat = weights_lat.to(device=device, dtype=dtype)
 
 # Load datasets
 datasets = {}
-for split in ["train", "val"]:
-    ds = xr.open_zarr(f"../data/sqg_{split}.zarr")["q"].compute(num_workers=4)
+split_to_file = {
+    "train": "sqg_train_small.zarr",  # different name
+    "val": "sqg_val.zarr"
+}
+for split, fname in split_to_file.items():
+    ds = xr.open_zarr(f"../data/{fname}")["q"].compute(num_workers=4)
     vals = torch.as_tensor(ds.values, dtype=dtype, device=device)
     
     input_norm = (vals[:-1] - in_mean) / in_std
     residual_norm = (vals[1:] - vals[:-1] - res_mean) / res_std
     datasets[split] = torch.cat((input_norm, residual_norm), dim=1)
-
 train_loader = DataLoader(datasets["train"], batch_size=batch_size, shuffle=True, num_workers=0)
-val_loader = DataLoader(datasets["val"], batch_size=batch_size, shuffle=False, num_workers=0)
+val_loader   = DataLoader(datasets["val"],   batch_size=batch_size, shuffle=False, num_workers=0)
 
 # Instantiate the model
 model = get_net(
@@ -56,7 +58,6 @@ model = get_net(
     n_blocks=n_blocks,
     n_heads=n_heads,
     mult=2,
-    token_downsample_factor=token_downsample_factor,
     n_embedding = n_embedding, 
     wave_length = wave_length,
     device=device,
@@ -102,15 +103,9 @@ for epoch in pbar_epoch:  # OPTIONAL: Use epoch variable for logging
         optim.zero_grad()
         # Neural network predicts velocity
         prediction = model(input_tensor, pseudo_time) 
-        
-        # Downsample target to match model output resolution
-        target_velocity_downsampled = torch.nn.functional.avg_pool2d(
-            target_velocity, 
-            kernel_size=token_downsample_factor, 
-            stride=token_downsample_factor
-        )
+    
 
-        error = (prediction - target_velocity_downsampled).pow(2)
+        error = (prediction - target_velocity).pow(2)
         mse_train = error.mean()
         mse_train.backward()
         optim.step()
@@ -151,13 +146,8 @@ for epoch in pbar_epoch:  # OPTIONAL: Use epoch variable for logging
         with torch.no_grad():
             prediction = model(input_tensor, pseudo_time) 
             
-            target_velocity_downsampled = torch.nn.functional.avg_pool2d(
-                target_velocity, 
-                kernel_size=token_downsample_factor, 
-                stride=token_downsample_factor
-            )
         
-        error = (prediction - target_velocity_downsampled).pow(2)
+        error = (prediction - target_velocity).pow(2)
         curr_se = error.mean(dim=(1, 2, 3)).sum().item()
         mse_val = (mse_val * samples_val + curr_se) / (samples_val + len(batch))
         samples_val = samples_val + len(batch)
@@ -187,7 +177,6 @@ if best_model is not None:
             "n_blocks": n_blocks,
             "n_heads": n_heads,
             "mult": 2,
-            "token_downsample_factor": token_downsample_factor, 
             "n_embedding": n_embedding,      
             "wave_length": wave_length,
         }

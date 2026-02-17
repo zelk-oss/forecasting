@@ -19,37 +19,23 @@ lr = 1e-3
 n_features=64
 n_blocks=4
 n_heads=8
-n_embedding = 64
-token_downsample_factor=8
+n_embedding = 32
 
 # Prepare constants on device/dtype
-in_mean = in_mean.to(dtype=dtype)
-in_std = in_std.to(dtype=dtype)
-res_mean = res_mean.to(dtype=dtype)
-res_std = res_std.to(dtype=dtype)
-
-# Load small dataset (uses parent ../data)
-train_zarr = "../data/sqg_train.zarr"
-val_zarr = "../data/sqg_val.zarr"
-
-ds_train = xr.open_zarr(train_zarr)["q"].compute(num_workers=4)
-ds_val = xr.open_zarr(val_zarr)["q"].compute(num_workers=4)
-
-# Build normalized torch arrays: (time, channel, H, W)
-train_vals = torch.as_tensor(ds_train.values, dtype=dtype)
-val_vals   = torch.as_tensor(ds_val.values,   dtype=dtype)
-
-train_in  = (train_vals[:-1] - in_mean) / in_std
-train_res = (train_vals[1:] - train_vals[:-1] - res_mean) / res_std
-
-train_data = torch.cat((train_in, train_res), dim=1)
-
-val_in  = (val_vals[:-1] - in_mean) / in_std
-val_res = (val_vals[1:] - val_vals[:-1] - res_mean) / res_std
-val_data = torch.cat((val_in, val_res), dim=1)
-
-train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=0)
-val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_workers=0)
+datasets = {}
+split_to_file = {
+    "train": "sqg_train_small.zarr",  # different name
+    "val": "sqg_val.zarr"
+}
+for split, fname in split_to_file.items():
+    ds = xr.open_zarr(f"../data/{fname}")["q"].compute(num_workers=4)
+    vals = torch.as_tensor(ds.values, dtype=dtype, device=device)
+    
+    input_norm = (vals[:-1] - in_mean) / in_std
+    residual_norm = (vals[1:] - vals[:-1] - res_mean) / res_std
+    datasets[split] = torch.cat((input_norm, residual_norm), dim=1)
+train_loader = DataLoader(datasets["train"], batch_size=batch_size, shuffle=True, num_workers=0)
+val_loader   = DataLoader(datasets["val"],   batch_size=batch_size, shuffle=False, num_workers=0)
 
 # Build model + optimizer
 model = get_net(

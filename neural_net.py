@@ -294,9 +294,8 @@ class Head(torch.nn.Module):
         out_tensor = self.out_layer(in_normed)
         
         # Use provided token_grid_size or calculate from tensor shape
-        if token_grid_size is None:
-            # Infer grid size from in_tensor shape: [batch, height*width, features]
-            token_grid_size = int(math.sqrt(in_tensor.shape[1]))
+        # Infer grid size from in_tensor shape: [batch, height*width, features]
+        token_grid_size = int(math.sqrt(in_tensor.shape[1]))
         
         # Reshape to 2D spatial grid with 2x2 upsampling
         out_tensor = rearrange(
