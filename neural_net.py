@@ -7,6 +7,7 @@
 
 # System modules
 import logging
+import math
 from typing import Tuple
 
 # External modules
@@ -263,7 +264,8 @@ class Head(torch.nn.Module):
         super().__init__()
         self.n_features = n_features
         self.n_output = n_output
-        self.token_grid_size = 256 // token_downsample_factor
+        self.token_downsample_factor = token_downsample_factor
+        # Note: token_grid_size is calculated dynamically in forward pass
 
         if n_embedding > 0:
             self.gate_layer = torch.nn.Linear(
@@ -292,7 +294,8 @@ class Head(torch.nn.Module):
     def forward(
             self,
             in_tensor: torch.Tensor,
-            embedding: torch.Tensor | None = None
+            embedding: torch.Tensor | None = None,
+            token_grid_size: int | None = None
     ) -> torch.Tensor:
         if self.gate_layer is not None:
             gate_tensor = self.gate_layer(embedding).unsqueeze(1)
@@ -300,12 +303,18 @@ class Head(torch.nn.Module):
         else:
             in_normed = self.in_norm(in_tensor)
         out_tensor = self.out_layer(in_normed)
-        # CHANGED: h=16, w=32 → h=32, w=32 (for 32×32 token grid after pooling)
+        
+        # Use provided token_grid_size or calculate from tensor shape
+        if token_grid_size is None:
+            # Infer grid size from in_tensor shape: [batch, height*width, features]
+            token_grid_size = int(math.sqrt(in_tensor.shape[1]))
+        
+        # Reshape to 2D spatial grid with 2x2 upsampling
         out_tensor = rearrange(
             out_tensor,
             "b (w h) (c w2 h2) -> b c (w w2) (h h2)",
-            h=self.token_grid_size,  # CHANGEED FROM h=32
-            w=self.token_grid_size, 
+            h=token_grid_size,
+            w=token_grid_size, 
             h2=2, w2=2
         )
         return out_tensor
@@ -354,6 +363,7 @@ class Transformer(torch.nn.Module):
             wave_length: float = 0.07,
     ) -> None:
         super().__init__()
+        self.token_downsample_factor = token_downsample_factor
         self.tokenizer = Tokenizer(
             n_channels=n_input,
             n_features=n_features,
@@ -400,21 +410,25 @@ class Transformer(torch.nn.Module):
         else:
             embedding = None
         
-        # Tokenize: (B, 1, 512, 512) -> (B, 256, 256, n_features)
-        tokens = self.tokenizer(in_tensor)  # shape: (B, 256*256, n_features)
+        # Tokenize: (B, C, H, W) -> (B, H/2, W/2, n_features) then (B, (H/2)*(W/2), n_features)
+        tokens = self.tokenizer(in_tensor)  # shape: (B, (H/2)*(W/2), n_features)
+        
+        # Dynamically calculate grid size from token sequence length
+        B, token_seq_len, C = tokens.shape
+        token_grid_size = int(math.sqrt(token_seq_len))
         
         # Reshape to 2D, pool, reshape back to sequence
-        B, _, C = tokens.shape  # B = batch, _ = 256*256, C = n_features
-        tokens_2d = tokens.reshape(B, 256, 256, C).permute(0, 3, 1, 2)  # (B, C, 256, 256)
-        tokens_2d = self.token_pool(tokens_2d)  # (B, C, 32, 32) with factor=8
-        tokens = tokens_2d.permute(0, 2, 3, 1).reshape(B, -1, C)  # (B, 32*32, C)
+        tokens_2d = tokens.reshape(B, token_grid_size, token_grid_size, C).permute(0, 3, 1, 2)  # (B, C, grid_size, grid_size)
+        tokens_2d = self.token_pool(tokens_2d)  # (B, C, grid_size//8, grid_size//8)
+        tokens = tokens_2d.permute(0, 2, 3, 1).reshape(B, -1, C)  # (B, (grid_size//8)^2, C)
         
         # Transformer blocks
         for block in self.blocks:
             tokens = block(tokens, embedding)
         
-        # Head expects (B, 32*32, C) and outputs (B, n_output, H, W)
-        out_tensor = self.head(tokens, embedding)
+        # Head expects (B, (grid_size//8)^2, C) and outputs (B, n_output, H_out, W_out)
+        # Pass token_grid_size//8 to Head for correct reshaping
+        out_tensor = self.head(tokens, embedding, token_grid_size=token_grid_size // self.token_downsample_factor)
         return out_tensor
 
 
