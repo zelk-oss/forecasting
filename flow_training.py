@@ -24,7 +24,7 @@ n_features = 64
 lr = 1e-3
 n_blocks = 4
 n_heads = 8
-token_downsample_factor = 1
+token_downsample_factor = 8
 n_embedding = 256    
 wave_length = 0.07  
 
