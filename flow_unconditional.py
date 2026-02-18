@@ -1,7 +1,5 @@
 # For debugging
-%load_ext autoreload
-%autoreload 2
-
+import os
 from copy import deepcopy
 
 import torch
@@ -39,6 +37,18 @@ print(f"train_data.shape: {train_data.shape}")
 print(f"train_data.dtype: {train_data.dtype}")
 print(f"Number of channels: {train_data.shape[1] if len(train_data.shape) > 1 else 'N/A'}")
 
+print("\n=== DATASET DEBUG ===")
+print("train_data.shape:", train_data.shape)
+print("Expected: (N, 1, H, W) for unconditional FM")
+
+# Check if channel dimension missing
+if train_data.ndim == 3:
+    print("⚠️ Missing channel dimension! Should be 4D.")
+elif train_data.ndim == 4:
+    print("✅ Channel dimension present.")
+else:
+    print("❌ Unexpected tensor rank:", train_data.ndim)
+
 del ds_train
 train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
 print(f"len train loader: {len(train_loader)}")
@@ -52,6 +62,18 @@ for i, batch in enumerate(train_loader):
 
 ds_val = xr.open_zarr("../data/sqg_val.zarr")["q"].compute(num_workers=16) # validation data 
 val_data = (torch.as_tensor(ds_val.values[:-1], dtype=dtype)-in_mean) / in_std
+
+print("\n=== DATASET DEBUG ===")
+print("val_data.shape:", val_data.shape)
+print("Expected: (N, 1, H, W) for unconditional FM")
+
+# Check if channel dimension missing
+if val_data.ndim == 3:
+    print("⚠️ Missing channel dimension! Should be 4D.")
+elif val_data.ndim == 4:
+    print("✅ Channel dimension present.")
+else:
+    print("❌ Unexpected tensor rank:", val_data.ndim)
 del ds_val
 
 val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
@@ -93,6 +115,10 @@ for _ in pbar_epoch:
     for batch in pbar_train:        
         batch = batch.to(device=device, dtype=dtype)
 
+        if _ == 0 and pbar_train.n == 0:  # only first batch first epoch
+            print("\n=== FIRST TRAIN BATCH DEBUG ===")
+            print("batch.shape:", batch.shape)
+
         # unconditional: target = full batch 
         data_target = batch
         noise = torch.randn_like(data_target)
@@ -115,6 +141,11 @@ for _ in pbar_epoch:
         input_tensor = intermediate_state
 
         optim.zero_grad()
+
+        if _ == 0 and pbar_train.n == 0:
+            print("\n=== INTERPOLANT DEBUG ===")
+            print("intermediate_state.shape:", intermediate_state.shape)
+            print("pseudo_time.shape:", pseudo_time.shape)
         ## Neural network predicts velocity now
         prediction = model(input_tensor, pseudo_time)
         error = (prediction - target_velocity).pow(2)
@@ -184,7 +215,6 @@ if best_model is not None:
             "n_output": 1,
             "n_features": n_features,
             "n_blocks": n_blocks,
-            "n_heads": n_heads,
             "mult": 2,
             "n_embedding": n_embedding,      
             "wave_length": wave_length,
