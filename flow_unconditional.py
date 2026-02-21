@@ -1,4 +1,8 @@
-# For debugging
+"""
+Training a flow matching model on SQG dynamics. 
+The model takes the intermediate state xt and the time t as inputs. 
+Outputs learnt velocity field. 
+"""
 import os
 from copy import deepcopy
 
@@ -23,7 +27,7 @@ torch.manual_seed(42)
 device = torch.device("cuda")
 dtype = torch.bfloat16
 batch_size = 64
-n_epochs = 5
+n_epochs = 40
 n_blocks = 4
 n_features = 64 
 
@@ -73,7 +77,7 @@ del raw_sample, normalized
 # define the NN 
 n_embedding = 32
 wave_length = 0.1
-lr = 1e-3
+lr = 1e-2
 model = get_net(
     # Input: only intermediate state: unconditional model
     n_input=1,
@@ -83,21 +87,6 @@ model = get_net(
     device=device, dtype=dtype
 )
 optim = torch.optim.Adam(model.parameters(), lr=lr)
-
-# ── Verify model forward pass shape ──────────────────────────────────────────
-print("\n=== Model forward pass audit ===")
-dummy_x  = torch.randn(4, 1, 64, 64, device=device, dtype=dtype)  # small spatial for speed
-dummy_t  = torch.rand(4, 1, device=device, dtype=dtype)
-try:
-    dummy_out = model(dummy_x, dummy_t)
-    print(f"  Input shape  : {dummy_x.shape}")
-    print(f"  Output shape : {dummy_out.shape}")
-    print(f"  Output std   : {dummy_out.float().std():.4f}  (expect ~1 if init is OK)")
-    assert dummy_out.shape == dummy_x.shape, \
-        f"Shape mismatch: in={dummy_x.shape} out={dummy_out.shape}"
-    print("  ✓ Forward pass OK")
-except Exception as e:
-    print(f"  ✗ Forward pass FAILED: {e}")
 
 pbar_epoch = tqdm(range(n_epochs))
 
@@ -140,7 +129,6 @@ for _ in pbar_epoch:
         error = (prediction - target_velocity).pow(2)
 
         mse_train = (error).mean()
-        print("mse train:", mse_train)
         rmse_train = torch.sqrt(error.mean(dim=(1,2,3)))  # per sample
         print("train RMSE per sample:", rmse_train.mean().item())
         mse_train.backward()
@@ -195,98 +183,7 @@ for _ in pbar_epoch:
     if mse_val < 0.999 * best_mse: # 0.999 to get rid of randomness 
         best_mse = mse_val
         best_model = deepcopy(model).cpu()
-    """
-    # ── Replace with this ───────────────────────────────────
 
-    N_INT_VAL   = 50     # more steps than training for cleaner samples
-    N_SAMP_VAL  = 16     # number of samples to generate for RMSE check
-    val_rmse_history   = []
-    val_floss_history  = []
-    train_loss_history = []
-    
-    for epoch in pbar_epoch:
-        # ── Training ──────────────────────────────────────────────────────────────
-        model.train()
-        train_losses = []
-        pbar_train = tqdm(train_loader, leave=True)
-        for batch in pbar_train:
-            batch       = batch.to(device=device, dtype=dtype)
-            noise       = torch.randn_like(batch)
-            pseudo_time = (torch.linspace(0, 1, batch.shape[0]+1, device=device, dtype=dtype)[:-1, None]
-                           + torch.rand(1, device=device, dtype=dtype)) % 1
-            z_t         = pseudo_time[..., None, None] * batch + (1 - pseudo_time[..., None, None]) * noise
-            v_target    = batch - noise
-    
-            optim.zero_grad()
-            v_pred      = model(z_t, pseudo_time)
-            loss        = (v_pred - v_target).pow(2).mean()
-            loss.backward()
-            optim.step()
-            train_losses.append(loss.item())
-            pbar_train.set_postfix(train_loss=f"{loss.item():.4f}")
-    
-        train_loss_history.append(np.mean(train_losses))
-    
-        # ── Validation flow loss ──────────────────────────────────────────────────
-        model.eval()
-        val_losses = []
-        with torch.no_grad():
-            for batch in val_loader:
-                batch       = batch.to(device=device, dtype=dtype)
-                noise       = torch.randn_like(batch)
-                pseudo_time = (torch.linspace(0, 1, batch.shape[0]+1, device=device, dtype=dtype)[:-1, None]
-                               + torch.rand(1, device=device, dtype=dtype)) % 1
-                z_t         = pseudo_time[..., None, None] * batch + (1 - pseudo_time[..., None, None]) * noise
-                v_target    = batch - noise
-                v_pred      = model(z_t, pseudo_time)
-                val_losses.append((v_pred - v_target).pow(2).mean().item())
-        mse_val = np.mean(val_losses)
-        val_floss_history.append(mse_val)
-    
-        # ── Sample quality RMSE (the metric that actually matters) ────────────────
-        # Generate N_SAMP_VAL samples and compare against random val snapshots
-        with torch.no_grad():
-            z = torch.randn(N_SAMP_VAL, 1, H, W, device=device, dtype=dtype)
-            dt = 1.0 / N_INT_VAL
-            for t_val in np.linspace(0, 1, N_INT_VAL + 1)[:-1]:
-                pt  = torch.full((N_SAMP_VAL, 1), t_val, device=device, dtype=dtype)
-                z   = z + dt * model(z, pt)
-            samples_val_np = z.float().cpu().numpy()   # (N_SAMP_VAL, 1, H, W) — still normalized
-    
-        # pick random val snapshots (also normalized)
-        idx_val   = np.random.choice(len(val_data), N_SAMP_VAL, replace=False)
-        truth_val = val_data[idx_val].numpy()           # (N_SAMP_VAL, 1, H, W) — normalized
-    
-        # RMSE in normalized space (should go well below √2 ≈ 1.41 if learning)
-        sample_rmse  = np.sqrt(((samples_val_np - truth_val) ** 2).mean())
-        sample_sigma = samples_val_np.std()
-        val_rmse_history.append(sample_rmse)
-    
-        print(f"  Epoch {epoch+1:3d} | train_loss={train_loss_history[-1]:.4f} "
-              f"| val_flow_loss={mse_val:.4f} "
-              f"| sample_RMSE={sample_rmse:.4f} (baseline={np.sqrt(2):.3f}) "
-              f"| sample_std={sample_sigma:.4f} (target≈1.0)")
-    
-        # ── Plot training curves every 5 epochs ──────────────────────────────────
-        if (epoch + 1) % 5 == 0 or epoch == 0:
-            fig, axes = plt.subplots(1, 3, figsize=(14, 3.5))
-            axes[0].plot(train_loss_history, label="train"); axes[0].plot(val_floss_history, label="val")
-            axes[0].set_title("Flow matching loss"); axes[0].legend(); axes[0].grid(ls=":", alpha=0.4)
-    
-            axes[1].plot(val_rmse_history, color="tomato")
-            axes[1].axhline(np.sqrt(2), color="k", ls="--", lw=1, label="pure noise baseline")
-            axes[1].axhline(1.0, color="green", ls="--", lw=1, label="σ_data (normalized)")
-            axes[1].set_title("Sample RMSE (normalized space)"); axes[1].legend(); axes[1].grid(ls=":", alpha=0.4)
-    
-            # plot one generated vs one truth
-            plot_q(samples_val_np[0, 0], ax=axes[2], title=f"Sample (epoch {epoch+1}, std={sample_sigma:.3f})")
-            plt.tight_layout(); plt.show()
-    
-        # ── Save best ─────────────────────────────────────────────────────────────
-        if mse_val < 0.999 * best_mse:
-            best_mse   = mse_val
-            best_model = deepcopy(model).cpu()
-        """
 # store best model 
 if best_model is not None:
     # Save best model checkpoint
@@ -304,7 +201,7 @@ if best_model is not None:
             "wave_length": wave_length,
         }
     }
-    torch.save(ckpt, os.path.join("..", "data", "best_flowmodel_20epochs.ckpt"))
+    torch.save(ckpt, os.path.join("..", "data", "best_flowmodel_30epochs_lr1e-2.ckpt"))
     print(f"Saved best checkpoint (MSE={best_mse:.6f}) to ../data/best_flowmodel_test.ckpt")
 else:
     print("Warning: No model was saved (validation never improved)")
