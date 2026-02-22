@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 import xarray as xr
 import numpy
 
-from tqdm.notebook import tqdm 
+from tqdm import tqdm 
 
 from neural_net import get_net
 from constants import *
@@ -26,26 +26,26 @@ torch.manual_seed(42)
 # settings 
 device = torch.device("cuda")
 dtype = torch.bfloat16
+
 batch_size = 64
-n_epochs = 40
-n_blocks = 4
-n_features = 64 
+n_epochs = 20 
+
+n_blocks = 6
+n_features = 128
+n_heads = 4      # must divide n_features
+n_embedding = 32
+
+wave_length = 0.1
+lr = 3e-4
 
 # load data 
-ds_train = xr.open_zarr("../data/sqg_train_small.zarr")["q"].compute(num_workers=4)
+ds_train = xr.open_zarr("../data/sqg_train.zarr")["q"].compute(num_workers=4)
 
 train_data = ((torch.as_tensor(ds_train.values[:-1], dtype=dtype)-in_mean) / in_std)
+print(train_data.shape)
 
 del ds_train
 train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
-print(f"len train loader: {len(train_loader)}")
-
-# Check actual batch shapes
-print("\nFirst 3 batches:")
-for i, batch in enumerate(train_loader):
-    print(f"  Batch {i}: {batch.shape}")
-    if i >= 2:
-        break
 
 ds_val = xr.open_zarr("../data/sqg_val.zarr")["q"].compute(num_workers=16) # validation data 
 val_data = (torch.as_tensor(ds_val.values[:-1], dtype=dtype)-in_mean) / in_std
@@ -55,10 +55,8 @@ del ds_val
 val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
 print(f"len train loader: {len(val_loader)}")
 
-# ── ADD THIS BLOCK RIGHT AFTER LOADING DATA, BEFORE TRAINING ─────────────────
-
+# checking mean and sted 
 from constants import in_mean, in_std   # make the import explicit
-
 print("=== Normalization audit ===")
 print(f"  in_mean : {in_mean}")
 print(f"  in_std  : {in_std}")
@@ -75,24 +73,29 @@ del raw_sample, normalized
 
 
 # define the NN 
-n_embedding = 32
-wave_length = 0.1
-lr = 1e-2
 model = get_net(
     # Input: only intermediate state: unconditional model
     n_input=1,
     n_output=1, n_blocks=n_blocks, n_features=n_features, mult=2,
+    n_heads = n_heads, 
     # Activation of pseudo time
     n_embedding=n_embedding, wave_length=wave_length,
     device=device, dtype=dtype
 )
 optim = torch.optim.Adam(model.parameters(), lr=lr)
 
+print(sum(p.numel() for p in model.parameters()) / 1e6, "M parameters")
+
 pbar_epoch = tqdm(range(n_epochs))
 
 mse_val = torch.inf
 best_mse = torch.inf
 best_model = None
+
+history = {"train_mse": [], "val_mse": []}
+
+train_mse_epoch = 0.0
+train_samples = 0
 
 for _ in pbar_epoch:
     pbar_train = tqdm(iter(train_loader), total=len(train_loader), leave=True)
@@ -130,19 +133,24 @@ for _ in pbar_epoch:
 
         mse_train = (error).mean()
         rmse_train = torch.sqrt(error.mean(dim=(1,2,3)))  # per sample
-        print("train RMSE per sample:", rmse_train.mean().item())
         mse_train.backward()
         optim.step()
 
+        # accumulate values for loss-tracking 
+        train_mse_epoch = (train_mse_epoch * train_samples + mse_train.item() * len(batch)) / (train_samples + len(batch))
+        train_samples += len(batch)
+
+        
         pbar_train.set_postfix(mse_train=mse_train.item(), mse_val=mse_val)
 
+    history["train_mse"].append(train_mse_epoch)
+    
     mse_val = 0
     samples_val = 0
     pbar_val = tqdm(enumerate(val_loader), total=len(val_loader), leave=False)
 
     
     # Validation loop
-    
     model = model.eval()
     for k, batch in pbar_val:        
         batch = batch.to(device=device, dtype=dtype)
@@ -177,12 +185,28 @@ for _ in pbar_epoch:
         samples_val = samples_val + len(batch)
         mse_val = mse_val / samples_val
 
+    history["val_mse"].append(mse_val)
+    
     pbar_train.set_postfix(mse_train=mse_train.item(), mse_val=mse_val)
         
     # Check if new model is better
     if mse_val < 0.999 * best_mse: # 0.999 to get rid of randomness 
         best_mse = mse_val
         best_model = deepcopy(model).cpu()
+
+
+import json, matplotlib.pyplot as plt
+
+with open("../data/loss_history.json", "w") as f:
+    json.dump(history, f)
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.semilogy(history["train_mse"], label="train MSE")
+ax.semilogy(history["val_mse"],   label="val MSE")
+ax.set_xlabel("epoch"); ax.set_ylabel("MSE (log scale)")
+ax.legend(); ax.grid(ls=":", alpha=0.5)
+plt.tight_layout()
+plt.savefig("../data/loss_curve.png", dpi=150)
 
 # store best model 
 if best_model is not None:
@@ -201,7 +225,7 @@ if best_model is not None:
             "wave_length": wave_length,
         }
     }
-    torch.save(ckpt, os.path.join("..", "data", "best_flowmodel_30epochs_lr1e-2.ckpt"))
+    torch.save(ckpt, os.path.join("..", "data", "best_flowmodel_test.ckpt"))
     print(f"Saved best checkpoint (MSE={best_mse:.6f}) to ../data/best_flowmodel_test.ckpt")
 else:
     print("Warning: No model was saved (validation never improved)")
@@ -221,3 +245,8 @@ print(f"  in_mean={float(in_mean):.5f}  in_std={float(in_std):.5f}")
 # drops toward ≈ 1.0   → model is transporting but distribution is too wide  
 # drops toward < 1.0   → model is learning the distribution correctly
 
+# Situation                MSE         RMSE            Meaning
+# Untrained / pure noise   ≈ 2.0       ≈ 1.41       model predicts 0, target has variance 2
+# Learning something      < 1.5        < 1.22       already meaningful
+# Decent model          0.1 – 0.5    0.32 – 0.71    depends on field complexity
+# Very good model         < 0.1        < 0.32
