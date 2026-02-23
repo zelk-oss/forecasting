@@ -214,7 +214,7 @@ class Tokenizer(torch.nn.Module):
             self,
             n_channels: int,
             n_features: int,
-            patch_size = 16
+            patch_size = 2
     ) -> None:
         super().__init__()
         self.n_channels = n_channels
@@ -349,7 +349,7 @@ class Transformer(torch.nn.Module):
             n_blocks: int = 8,
             n_heads: int = 8,
             n_embedding: int = 0,
-            patch_size: int = 16,
+            patch_size: int = 2,
             mult: int = 2,
             wave_length: float = 0.07,
     ) -> None:
@@ -408,7 +408,7 @@ class Transformer(torch.nn.Module):
 
 def get_net(
     n_input=1, n_output=1, n_blocks=8, n_features=512, 
-    patch_size: int = 16, n_heads=8,
+    patch_size: int = 2, n_heads=8,
     mult=2,
     n_embedding=0, wave_length=0.07,
     device=None, dtype=torch.float32
