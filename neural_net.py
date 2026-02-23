@@ -214,6 +214,7 @@ class Tokenizer(torch.nn.Module):
             self,
             n_channels: int,
             n_features: int,
+            patch_size = 16
     ) -> None:
         super().__init__()
         self.n_channels = n_channels
@@ -222,8 +223,8 @@ class Tokenizer(torch.nn.Module):
         self.in_layer = torch.nn.Conv2d(
             n_channels + 1,
             n_features,
-            kernel_size=2,
-            stride=2,
+            kernel_size=patch_size,
+            stride=patch_size,
             bias=False,
             padding=0
         )
@@ -252,10 +253,12 @@ class Head(torch.nn.Module):
             n_features: int,
             n_output: int,
             n_embedding: int = 0,
+            patch_size = 2, 
     ) -> None:
         super().__init__()
         self.n_features = n_features
         self.n_output = n_output
+        self.patch_size = patch_size
 
         if n_embedding > 0:
             self.gate_layer = torch.nn.Linear(
@@ -268,7 +271,7 @@ class Head(torch.nn.Module):
             self.gate_layer = None
             self.in_norm = torch.nn.RMSNorm(n_features)
         self.out_layer = torch.nn.Linear(
-            n_features, n_output*4, bias=False
+            n_features, n_output*patch_size * patch_size, bias=False
         )
         self.reset_parameters()
 
@@ -277,7 +280,7 @@ class Head(torch.nn.Module):
         # So that expected output variance = 1
         torch.nn.init.kaiming_normal_(weights, nonlinearity="linear")
         # Initialize as nearest neighbor interpolation
-        weights = weights.repeat_interleave(4, dim=0)
+        weights = weights.repeat_interleave(self.patch_size**2, dim=0)
         # Copy the weights to the output layer
         self.out_layer.weight.data.copy_(weights)
 
@@ -303,7 +306,7 @@ class Head(torch.nn.Module):
             "b (w h) (c w2 h2) -> b c (w w2) (h h2)",
             h=token_grid_size,
             w=token_grid_size, 
-            h2=2, w2=2
+            h2=self.patch_size, w2=self.patch_size
         )
         return out_tensor
 
@@ -346,6 +349,7 @@ class Transformer(torch.nn.Module):
             n_blocks: int = 8,
             n_heads: int = 8,
             n_embedding: int = 0,
+            patch_size: int = 16,
             mult: int = 2,
             wave_length: float = 0.07,
     ) -> None:
@@ -353,6 +357,7 @@ class Transformer(torch.nn.Module):
         self.tokenizer = Tokenizer(
             n_channels=n_input,
             n_features=n_features,
+            patch_size = patch_size, 
         )
 
         self.blocks = torch.nn.ModuleList(
@@ -370,6 +375,7 @@ class Transformer(torch.nn.Module):
             n_features=n_features,
             n_output=n_output,
             n_embedding=n_embedding,
+            patch_size = patch_size
         )
         if n_embedding > 0:
             # Define embedding
@@ -401,7 +407,8 @@ class Transformer(torch.nn.Module):
 
 
 def get_net(
-    n_input=1, n_output=1, n_blocks=8, n_features=512, n_heads=8,
+    n_input=1, n_output=1, n_blocks=8, n_features=512, 
+    patch_size: int = 16, n_heads=8,
     mult=2,
     n_embedding=0, wave_length=0.07,
     device=None, dtype=torch.float32
@@ -412,6 +419,7 @@ def get_net(
         n_features=n_features, n_heads=n_heads,
         mult=mult,
         n_embedding=n_embedding, wave_length=wave_length,
+        patch_size=patch_size,
     )
     if device is None:
         device = torch.device("cpu")

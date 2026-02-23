@@ -28,7 +28,7 @@ device = torch.device("cuda")
 dtype = torch.bfloat16
 
 batch_size = 32
-n_epochs = 30 
+n_epochs = 100
 
 n_blocks = 6
 n_features = 64
@@ -36,7 +36,7 @@ n_heads = 4      # must divide n_features
 n_embedding = 16
 
 wave_length = 0.1
-lr = 1e-4
+lr = 5e-4
 
 # load data 
 ds_train = xr.open_zarr("../data/sqg_train.zarr")["q"].compute(num_workers=2)
@@ -197,7 +197,7 @@ for _ in pbar_epoch:
 
 import json, matplotlib.pyplot as plt
 
-with open("../data/loss_history.json", "w") as f:
+with open("../data/loss_history1.json", "w") as f:
     json.dump(history, f)
 
 fig, ax = plt.subplots(figsize=(8, 4))
@@ -206,7 +206,7 @@ ax.semilogy(history["val_mse"],   label="val MSE")
 ax.set_xlabel("epoch"); ax.set_ylabel("MSE (log scale)")
 ax.legend(); ax.grid(ls=":", alpha=0.5)
 plt.tight_layout()
-plt.savefig("../data/loss_curve.png", dpi=150)
+plt.savefig("../data/loss_curve1.png", dpi=150)
 
 # store best model 
 if best_model is not None:
@@ -226,7 +226,7 @@ if best_model is not None:
             "wave_length": wave_length,
         }
     }
-    torch.save(ckpt, os.path.join("..", "data", "best_flowmodel_test.ckpt"))
+    torch.save(ckpt, os.path.join("..", "data", "best_flowmodel_test1.ckpt"))
     print(f"Saved best checkpoint (MSE={best_mse:.6f}) to ../data/best_flowmodel_test.ckpt")
 else:
     print("Warning: No model was saved (validation never improved)")
