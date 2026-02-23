@@ -36,7 +36,7 @@ n_heads = 4      # must divide n_features
 n_embedding = 16
 
 wave_length = 0.1
-lr = 3e-3
+lr = 1e-4
 
 # load data 
 ds_train = xr.open_zarr("../data/sqg_train.zarr")["q"].compute(num_workers=2)
