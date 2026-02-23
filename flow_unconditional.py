@@ -220,6 +220,7 @@ if best_model is not None:
             "n_output": 1,
             "n_features": n_features,
             "n_blocks": n_blocks,
+            "n_heads": n_heads, 
             "mult": 2,
             "n_embedding": n_embedding,      
             "wave_length": wave_length,

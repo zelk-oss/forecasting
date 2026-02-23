@@ -27,19 +27,19 @@ torch.manual_seed(42)
 device = torch.device("cuda")
 dtype = torch.bfloat16
 
-batch_size = 64
+batch_size = 32
 n_epochs = 20 
 
 n_blocks = 6
-n_features = 128
+n_features = 64
 n_heads = 4      # must divide n_features
-n_embedding = 32
+n_embedding = 16
 
 wave_length = 0.1
 lr = 3e-4
 
 # load data 
-ds_train = xr.open_zarr("../data/sqg_train.zarr")["q"].compute(num_workers=4)
+ds_train = xr.open_zarr("../data/sqg_train.zarr")["q"].compute(num_workers=2)
 
 train_data = ((torch.as_tensor(ds_train.values[:-1], dtype=dtype)-in_mean) / in_std)
 print(train_data.shape)
@@ -220,6 +220,7 @@ if best_model is not None:
             "n_output": 1,
             "n_features": n_features,
             "n_blocks": n_blocks,
+            "n_heads": n_heads, 
             "mult": 2,
             "n_embedding": n_embedding,      
             "wave_length": wave_length,
