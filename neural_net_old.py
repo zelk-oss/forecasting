@@ -52,7 +52,7 @@ class ConvNeXtBlock(torch.nn.Module):
             torch.nn.ReLU()
         )
         self.out_branch = torch.nn.Conv2d(n_features*mult, n_features, kernel_size=1)
-        self.gamma = torch.nn.Parameter(torch.zeros(n_features, 1, 1))
+        self.gamma = torch.nn.Parameter(torch.ones(n_features, 1, 1)) # changed to ones instead of zeroes
 
     def forward(self, in_tensor, embedding):
         padded_tensor = self.lon_pad(in_tensor)
