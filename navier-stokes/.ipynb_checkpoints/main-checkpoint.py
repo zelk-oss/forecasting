@@ -378,7 +378,7 @@ class Config:
         # interpolant + sampling
         self.sigma_coef = sigma_coef
         self.beta_fn = beta_fn
-        self.EM_sample_steps = 500
+        self.EM_sample_steps = 50 # 500
         self.t_min_sampling = 0.0  # no min time needed
         self.t_max_sampling = .999
 
@@ -401,8 +401,8 @@ class Config:
 
             maybe_create_dir(self.home)
 
-            self.data_fname = 'nse_data_tiny.pt'
-            # self.data_fname = 'my_nse_512.pt'
+            # self.data_fname = 'nse_data_tiny.pt'
+            self.data_fname = 'my_nse_512.pt'
             self.num_classes = 1
             self.lo_size = 64
             #self.lo_size = 512
@@ -420,7 +420,7 @@ class Config:
 
 
         # shared
-        self.num_workers = 4
+        self.num_workers = 0 # 4
         self.delta_t = 0.5
         self.wandb_project = 'nse'
         self.wandb_entity = 'marikgoldstein'
@@ -441,9 +441,9 @@ class Config:
             self.save_every = 1000
         
         # some training hparams
-        self.batch_size = 128 if self.dataset == 'cifar' else 32 
-        self.sampling_batch_size = self.batch_size if self.dataset=='cifar' else 4 
-        self.num_workers = 4
+        self.batch_size = 128 if self.dataset == 'cifar' else 4 # 32  
+        self.sampling_batch_size = self.batch_size if self.dataset=='cifar' else 1 # 4 
+        self.num_workers = 0 # 4
         self.t_min_train = 0.0
         self.t_max_train = 1.0
         self.max_grad_norm = 1.0
@@ -452,12 +452,12 @@ class Config:
         
         # arch
         self.unet_use_classes = True if self.dataset == 'cifar' else False
-        self.unet_channels = 128
+        self.unet_channels = 64 # 128
         self.unet_dim_mults = (1, 2, 2, 2) 
-        self.unet_resnet_block_groups = 8
+        self.unet_resnet_block_groups = 4 # 8
         self.unet_learned_sinusoidal_dim = 32
-        self.unet_attn_dim_head = 64
-        self.unet_attn_heads = 4
+        self.unet_attn_dim_head = 32 # 64
+        self.unet_attn_heads = 1 # 4
         self.unet_learned_sinusoidal_cond = True
         self.unet_random_fourier_features = False
 
