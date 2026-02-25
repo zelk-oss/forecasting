@@ -402,9 +402,12 @@ class Config:
             maybe_create_dir(self.home)
 
             self.data_fname = 'nse_data_tiny.pt'
+            # self.data_fname = 'my_nse_512.pt'
             self.num_classes = 1
             self.lo_size = 64
+            #self.lo_size = 512
             self.hi_size = 128
+            #self.hi_size = 512
             self.time_lag = 2
             self.subsampling_ratio = 1.0 
             self.grid_kwargs = {'normalize': False}
