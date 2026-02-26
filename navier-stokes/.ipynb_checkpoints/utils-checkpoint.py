@@ -173,6 +173,41 @@ def flatten_time(lo, hi, hi_size):
 def loader_from_tensor(lo, hi, batch_size, shuffle):
     return DataLoader(TensorDataset(lo, hi), batch_size = batch_size, shuffle = shuffle)
 
+def get_forecasting_dataloader(config, shuffle=False):
+    data_raw, time_raw = torch.load(config.data_fname)
+    del time_raw
+
+    # Handle both (Ntraj, Ntime, Nx, Ny) and (Ntime, Nx, Ny)
+    if data_raw.dim() == 4:
+        Ntj, Nts, Nx, Ny = data_raw.size()
+    elif data_raw.dim() == 3:
+        Nts, Nx, Ny = data_raw.size()
+        data_raw = data_raw.unsqueeze(0)  # add fake traj dim -> (1, Ntime, Nx, Ny)
+        Ntj = 1
+    else:
+        raise ValueError(f"Unexpected data shape: {data_raw.shape}")
+
+    # Compute normalization dynamically
+    avg_pixel_norm = torch.norm(data_raw, dim=(2, 3), p='fro').mean() / np.sqrt(Nx * Ny)
+    avg_pixel_norm = avg_pixel_norm.item()
+    data_raw = data_raw / avg_pixel_norm
+    new_avg_pixel_norm = 1.0
+
+    # lo = x_t, hi = x_{t+tau}, same resolution
+    lo, hi = maybe_lag(data_raw, config.time_lag)
+
+    # Flatten traj+time dims, add channel dim -> (N, 1, H, W)
+    N_lo = lo.shape[0] * lo.shape[1]
+    N_hi = hi.shape[0] * hi.shape[1]
+    lo = lo.reshape(N_lo, Nx, Ny)[:, None, :, :]
+    hi = hi.reshape(N_hi, Nx, Ny)[:, None, :, :]
+
+    lo = maybe_subsample(lo, config.subsampling_ratio)
+    hi = maybe_subsample(hi, config.subsampling_ratio)
+
+    loader = loader_from_tensor(lo, hi, config.batch_size, shuffle=shuffle)
+    return loader, avg_pixel_norm, new_avg_pixel_norm
+"""    
 def get_forecasting_dataloader(config, shuffle = False):
     data_raw, time_raw = torch.load(config.data_fname)
     del time_raw
@@ -200,7 +235,7 @@ def get_forecasting_dataloader(config, shuffle = False):
     # now they are image shaped. Be sure to shuffle to de-correlate neighboring samples when training. 
     loader = loader_from_tensor(lo, hi, config.batch_size, shuffle = shuffle)
     return loader, avg_pixel_norm, new_avg_pixel_norm
-
+"""
 def make_one_redblue_plot(x, fname):
     plt.ioff()
     fig = plt.figure(figsize=(3,3))
