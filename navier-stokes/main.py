@@ -81,8 +81,8 @@ class Trainer:
             'optimizer_state_dict': self.optimizer.state_dict(),
             'step': self.step,
         }
-        maybe_create_dir('./ckpts')
-        path = f"./ckpts/latest.pt"
+        maybe_create_dir('../ckpts')
+        path = f"../ckpts/latest.pt"
         torch.save(D, path)
         print("saved ckpt at ", path)
 
@@ -402,7 +402,7 @@ class Config:
             maybe_create_dir(self.home)
 
             # self.data_fname = 'nse_data_tiny.pt'
-            self.data_fname = '../nse_data_tinier.pt'
+            self.data_fname = '../my_nse_512.pt'
             self.num_classes = 1
             # self.lo_size = 64
             self.lo_size = 512
