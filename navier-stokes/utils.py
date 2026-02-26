@@ -156,34 +156,10 @@ def maybe_lag(data, time_lag):
         inputs, outputs = data, data
     return inputs, outputs
 
-# changed for sqg 
-def maybe_downsample(inputs, outputs, lo_size, hi_size):
-
-    # ---------------------------------------------------------
-    # PURE FORECASTING MODE (no resolution change)
-    # ---------------------------------------------------------
-    if lo_size == hi_size:
-        return inputs, outputs
-
-    # ---------------------------------------------------------
-    # LOW → HIGH RESOLUTION MODE
-    # ---------------------------------------------------------
+def maybe_downsample(inputs, outputs, lo_size, hi_size):    
     upsampler = nn.Upsample(scale_factor=int(hi_size/lo_size), mode='nearest')
-
-    hi = interpolate(
-        outputs,
-        size=(hi_size, hi_size),
-        mode='bilinear'
-    )
-
-    lo = upsampler(
-        interpolate(
-            inputs,
-            size=(lo_size, lo_size),
-            mode='bilinear'
-        )
-    )
-
+    hi = interpolate(outputs, size=(hi_size,hi_size),mode='bilinear').reshape([-1,hi_size,hi_size])
+    lo = upsampler(interpolate(inputs, size=(lo_size,lo_size),mode='bilinear'))
     return lo, hi
 
 def flatten_time(lo, hi, hi_size):
@@ -215,17 +191,11 @@ def get_forecasting_dataloader(config, shuffle = False):
     # lo is x_t and hi is x_{t+tau}, and lo might be lower res than hi
 
     lo, hi = maybe_lag(data_raw, config.time_lag)
-    print("after lag:", lo.shape, hi.shape)
     lo, hi = maybe_downsample(lo, hi, config.lo_size, config.hi_size)
-    print("after downsample:", lo.shape, hi.shape)
     lo, hi = flatten_time(lo, hi, config.hi_size)
-    print("after flatten:", lo.shape, hi.shape)
-    
+
     lo = maybe_subsample(lo, config.subsampling_ratio)
     hi = maybe_subsample(hi, config.subsampling_ratio)
-
-
-
 
     # now they are image shaped. Be sure to shuffle to de-correlate neighboring samples when training. 
     loader = loader_from_tensor(lo, hi, config.batch_size, shuffle = shuffle)
