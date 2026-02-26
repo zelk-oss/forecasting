@@ -342,3 +342,37 @@ Grad step 19300. Loss:633.8594360351562
 Grad step 19400. Loss:2393.104248046875
 Grad step 19500. Loss:1065.8773193359375
 Grad step 19600. Loss:537.2779541015625
+Grad step 19700. Loss:591.344970703125
+Grad step 19800. Loss:807.2752685546875
+Grad step 19900. Loss:318.12164306640625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 20000. Loss:2078.700439453125
+saving!
+saved ckpt at  ./ckpts/latest.pt
+Grad step 20100. Loss:348.53387451171875
+Grad step 20200. Loss:1978.80419921875
+Grad step 20300. Loss:1468.30615234375
+Grad step 20400. Loss:822.639892578125
+Grad step 20500. Loss:261.93988037109375
+Grad step 20600. Loss:1100.5863037109375
+Grad step 20700. Loss:976.3700561523438
+Grad step 20800. Loss:1767.45703125
+Grad step 20900. Loss:1056.5252685546875
+Traceback (most recent call last):
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 504, in <module>
+    main()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 501, in main
+    trainer.fit()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 367, in fit
+    self.do_step(batch_idx, batch)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 337, in do_step
+    loss.backward()
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/_tensor.py", line 630, in backward
+    torch.autograd.backward(
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/autograd/__init__.py", line 364, in backward
+    _engine_run_backward(
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/autograd/graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

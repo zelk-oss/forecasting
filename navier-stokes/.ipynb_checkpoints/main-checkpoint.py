@@ -402,7 +402,7 @@ class Config:
             maybe_create_dir(self.home)
 
             # self.data_fname = 'nse_data_tiny.pt'
-            self.data_fname = 'nse_data_tinier.pt'
+            self.data_fname = '../nse_data_tinier.pt'
             self.num_classes = 1
             # self.lo_size = 64
             self.lo_size = 512

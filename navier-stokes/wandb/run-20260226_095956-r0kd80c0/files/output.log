@@ -1,0 +1,91 @@
+finished wandb setup
+dataset nse
+debug False
+sigma_coef 1.0
+beta_fn t^2
+EM_sample_steps 50
+t_min_sampling 0.0
+t_max_sampling 0.999
+center_data False
+home ./tmp_images/
+data_fname ../nse_data_tinier.pt
+num_classes 1
+lo_size 512
+hi_size 512
+time_lag 2
+subsampling_ratio 1.0
+C 1
+H 512
+W 512
+num_workers 0
+delta_t 0.5
+wandb_project nse
+wandb_entity marikgoldstein
+use_wandb True
+noise_strength 1.0
+overfit False
+sample_every 1000
+print_loss_every 100
+save_every 1000
+batch_size 4
+sampling_batch_size 1
+t_min_train 0.0
+t_max_train 1.0
+max_grad_norm 1.0
+base_lr 0.0002
+max_steps 1000000
+unet_use_classes False
+unet_channels 64
+unet_resnet_block_groups 4
+unet_learned_sinusoidal_dim 32
+unet_attn_dim_head 32
+unet_attn_heads 1
+unet_learned_sinusoidal_cond True
+unet_random_fourier_features False
+old_pixel_norm 3.0679163932800293
+new_pixel_norm 1.0
+wandb_run_id r0kd80c0
+starting fit
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Traceback (most recent call last):
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 504, in <module>
+    main()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 501, in main
+    trainer.fit()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 357, in fit
+    self.definitely_sample()
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 212, in definitely_sample
+    sample = self.EM(diffusion_fn=diffusion_fns[k], **EM_args)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 170, in EM
+    xt, mu = step_fn(xt, tscalar * ones, label = label)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 140, in step_fn
+    bF = self.model(xt, t, label, cond = cond)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/utils.py", line 142, in forward
+    out = self._arch(zt, t, y)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/unet.py", line 408, in forward
+    x = block1(x, t, c)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/unet.py", line 198, in forward
+    cond_emb = rearrange(cond_emb, 'b c -> b c 1 1')
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/einops/einops.py", line 616, in rearrange
+    return reduce(tensor, pattern, reduction="rearrange", **axes_lengths)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/einops/einops.py", line 537, in reduce
+    hashable_axes_lengths = tuple(axes_lengths.items())
+KeyboardInterrupt

@@ -156,10 +156,36 @@ def maybe_lag(data, time_lag):
         inputs, outputs = data, data
     return inputs, outputs
 
+# changed for sqg 
 def maybe_downsample(inputs, outputs, lo_size, hi_size):    
+
+    # ---------------------------------------------------------
+    # PURE FORECASTING MODE (no resolution change)
+    # ---------------------------------------------------------
+    if lo_size == hi_size:
+        hi = outputs.reshape([-1, hi_size, hi_size])
+        lo = inputs.reshape([-1, hi_size, hi_size])
+        return lo, hi
+
+    # ---------------------------------------------------------
+    # LOW → HIGH RESOLUTION MODE
+    # ---------------------------------------------------------
     upsampler = nn.Upsample(scale_factor=int(hi_size/lo_size), mode='nearest')
-    hi = interpolate(outputs, size=(hi_size,hi_size),mode='bilinear').reshape([-1,hi_size,hi_size])
-    lo = upsampler(interpolate(inputs, size=(lo_size,lo_size),mode='bilinear'))
+
+    hi = interpolate(
+        outputs, 
+        size=(hi_size, hi_size), 
+        mode='bilinear'
+    ).reshape([-1, hi_size, hi_size])
+
+    lo = upsampler(
+        interpolate(
+            inputs, 
+            size=(lo_size, lo_size), 
+            mode='bilinear'
+        )
+    )
+
     return lo, hi
 
 def flatten_time(lo, hi, hi_size):
