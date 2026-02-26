@@ -92,8 +92,8 @@ def setup_wandb(config):
         return
 
     config.wandb_run = wandb.init(
-        project = config.wandb_project,
-        entity = config.wandb_entity,
+        project = "navier-stokes",
+        entity = "zelcochiara-",
         resume = None,
         id = None,
     )

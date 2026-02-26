@@ -1,0 +1,47 @@
+{
+  "os":  "Linux-5.15.0-140-generic-x86_64-with-glibc2.35",
+  "python":  "CPython 3.10.19",
+  "startedAt":  "2026-02-26T08:33:40.497989Z",
+  "program":  "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py",
+  "codePath":  "navier-stokes/main.py",
+  "codePathLocal":  "main.py",
+  "git":  {
+    "remote":  "git@github.com:zelk-oss/forecasting.git",
+    "commit":  "ae271ee61d60579fcf4f90f084f2e4a9547b9528"
+  },
+  "email":  "zelcochiara@gmail.com",
+  "root":  "/libre/zelcoc/follmer/forecasting/navier-stokes",
+  "host":  "kaitain",
+  "executable":  "/libre/zelcoc/miniconda3/envs/follmer/bin/python3",
+  "cpu_count":  40,
+  "cpu_count_logical":  80,
+  "gpu":  "NVIDIA RTX A6000",
+  "gpu_count":  2,
+  "disk":  {
+    "/":  {
+      "total":  "315926315008",
+      "used":  "68045643776"
+    }
+  },
+  "memory":  {
+    "total":  "270034124800"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA RTX A6000",
+      "memoryTotal":  "51527024640",
+      "cudaCores":  10752,
+      "architecture":  "Ampere",
+      "uuid":  "GPU-4f9edc67-027a-7350-f08d-05a1e1f8c3dd"
+    },
+    {
+      "name":  "NVIDIA RTX A6000",
+      "memoryTotal":  "51527024640",
+      "cudaCores":  10752,
+      "architecture":  "Ampere",
+      "uuid":  "GPU-1f95b383-be9a-3651-7abc-47bf684934e0"
+    }
+  ],
+  "cudaVersion":  "12.6",
+  "writerId":  "bt0287il08c64w1vqee9pfjy3grf48c0"
+}

@@ -1,0 +1,16 @@
+{"time":"2026-02-26T09:31:54.400030392+01:00","level":"INFO","msg":"stream: starting","core version":"0.25.0"}
+{"time":"2026-02-26T09:31:54.728604993+01:00","level":"INFO","msg":"stream: created new stream","id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.728780299+01:00","level":"INFO","msg":"handler: started","stream_id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.72908601+01:00","level":"INFO","msg":"stream: started","id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.729089208+01:00","level":"INFO","msg":"writer: started","stream_id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.729143481+01:00","level":"INFO","msg":"sender: started","stream_id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.846095269+01:00","level":"ERROR","msg":"api: HTTP error","status":403,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2026-02-26T09:31:54.846331854+01:00","level":"ERROR","msg":"runupserter: failed to init run","error":"returned error 403: {\"data\":{\"upsertBucket\":null},\"errors\":[{\"message\":\"Personal entities are disabled, please log to a different team\",\"path\":[\"upsertBucket\"],\"extensions\":{\"code\":\"PERMISSION_ERROR\"}}]}"}
+{"time":"2026-02-26T09:31:54.860638089+01:00","level":"INFO","msg":"stream: closing","id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.861273571+01:00","level":"ERROR","msg":"sender: uploadConfigFile: runhandle: run not yet initialized"}
+{"time":"2026-02-26T09:31:54.862065926+01:00","level":"ERROR","msg":"runfiles: runhandle: run not yet initialized"}
+{"time":"2026-02-26T09:31:54.862654659+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-02-26T09:31:54.862681683+01:00","level":"INFO","msg":"handler: closed","stream_id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.862717956+01:00","level":"INFO","msg":"sender: closed","stream_id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.862736254+01:00","level":"INFO","msg":"stream: closed","id":"2ku14pxp"}
+{"time":"2026-02-26T09:31:54.895024053+01:00","level":"ERROR","msg":"stream: runURL: runhandle: run not yet initialized"}
