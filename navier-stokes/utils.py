@@ -174,7 +174,10 @@ def loader_from_tensor(lo, hi, batch_size, shuffle):
     return DataLoader(TensorDataset(lo, hi), batch_size = batch_size, shuffle = shuffle)
 
 def get_forecasting_dataloader(config, shuffle=False):
-    data_raw, time_raw = torch.load(config.data_fname)
+    data_raw, time_raw = torch.load(config.data_fname, weights_only=False)
+    #print("type of data raw:", type(data_raw))
+    #print("type of time raw:",type(time_raw))
+    
     del time_raw
 
     # Handle both (Ntraj, Ntime, Nx, Ny) and (Ntime, Nx, Ny)

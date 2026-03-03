@@ -81,8 +81,8 @@ class Trainer:
             'optimizer_state_dict': self.optimizer.state_dict(),
             'step': self.step,
         }
-        maybe_create_dir('../ckpts')
-        path = f"../ckpts/latest.pt"
+        maybe_create_dir('./ckpts')
+        path = f"./ckpts/latest.pt"
         torch.save(D, path)
         print("saved ckpt at ", path)
 
@@ -402,12 +402,12 @@ class Config:
             maybe_create_dir(self.home)
 
             # self.data_fname = 'nse_data_tiny.pt'
-            self.data_fname = '../my_nse_512.pt'
+            self.data_fname = '../../../fm_tutorial/dataset_gen/dataset/train_128.pt'
             self.num_classes = 1
             # self.lo_size = 64
-            self.lo_size = 512
+            self.lo_size = 128 # 512 for full resolution
             # self.hi_size = 128
-            self.hi_size = 512
+            self.hi_size = 128 # 512 for full resolution
             self.time_lag = 2
             self.subsampling_ratio = 1.0 
             self.grid_kwargs = {'normalize': False}
@@ -441,23 +441,23 @@ class Config:
             self.save_every = 1000
         
         # some training hparams
-        self.batch_size = 128 if self.dataset == 'cifar' else 4 # 32  
+        self.batch_size = 128 if self.dataset == 'cifar' else 8 # 32  
         self.sampling_batch_size = self.batch_size if self.dataset=='cifar' else 1 # 4 
         self.num_workers = 0 # 4
         self.t_min_train = 0.0
         self.t_max_train = 1.0
         self.max_grad_norm = 1.0
         self.base_lr = 2e-4 
-        self.max_steps = 1_000_000
+        self.max_steps = 100_000 # change for larger model 
         
         # arch
         self.unet_use_classes = True if self.dataset == 'cifar' else False
-        self.unet_channels = 64 # 128
+        self.unet_channels = 128 # 128
         self.unet_dim_mults = (1, 2, 2, 2) 
-        self.unet_resnet_block_groups = 4 # 8
+        self.unet_resnet_block_groups = 8 # 8
         self.unet_learned_sinusoidal_dim = 32
-        self.unet_attn_dim_head = 32 # 64
-        self.unet_attn_heads = 1 # 4
+        self.unet_attn_dim_head = 64 # 64
+        self.unet_attn_heads = 4 # 4
         self.unet_learned_sinusoidal_cond = True
         self.unet_random_fourier_features = False
 

@@ -109,3 +109,5 @@ config: {'_wandb': {}}
 2026-02-26 10:22:21,919 INFO    MainThread:4060332 [wandb_run.py:_config_callback():1403] config_cb new_pixel_norm 1.0 None
 2026-02-26 10:22:21,919 INFO    MainThread:4060332 [wandb_config.py:__setitem__():155] [no run ID] config set wandb_run_id = drtgh2he - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f19203f4340>>
 2026-02-26 10:22:21,919 INFO    MainThread:4060332 [wandb_run.py:_config_callback():1403] config_cb wandb_run_id drtgh2he None
+2026-02-26 10:32:52,289 INFO    wandb-AsyncioManager-main:4060332 [service_client.py:_forward_responses():134] Reached EOF.
+2026-02-26 10:32:52,290 INFO    wandb-AsyncioManager-main:4060332 [mailbox.py:close():155] Closing mailbox, abandoning 1 handles.

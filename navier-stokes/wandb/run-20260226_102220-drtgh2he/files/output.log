@@ -50,3 +50,29 @@ SAMPLING
 sampling for diffusion function: g_sigma
 sampling for diffusion function: g_other
 starting training
+Grad step 100. Loss:33654.53515625
+Grad step 200. Loss:11544.20703125
+Grad step 300. Loss:24063.984375
+Grad step 400. Loss:21318.263671875
+Grad step 500. Loss:13211.8798828125
+Grad step 600. Loss:16943.5703125
+Grad step 700. Loss:16298.92578125
+Grad step 800. Loss:16524.13671875
+Traceback (most recent call last):
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 504, in <module>
+    main()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 501, in main
+    trainer.fit()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 367, in fit
+    self.do_step(batch_idx, batch)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 334, in do_step
+    D = self.prepare_batch(batch)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 306, in prepare_batch
+    D = self.prepare_batch_nse(batch, for_sampling = for_sampling)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 264, in prepare_batch_nse
+    xlo, xhi = xlo.to(self.device), xhi.to(self.device)
+KeyboardInterrupt
