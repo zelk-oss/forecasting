@@ -1,0 +1,113 @@
+2026-03-04 09:42:34,239 INFO    MainThread:1469644 [wandb_setup.py:_flush():81] Current SDK version is 0.25.0
+2026-03-04 09:42:34,239 INFO    MainThread:1469644 [wandb_setup.py:_flush():81] Configure stats pid to 1469644
+2026-03-04 09:42:34,239 INFO    MainThread:1469644 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-03-04 09:42:34,239 INFO    MainThread:1469644 [wandb_init.py:setup_run_log_directory():717] Logging user logs to /libre/zelcoc/follmer/forecasting/navier-stokes/wandb/run-20260304_094234-0qgcmpet/logs/debug.log
+2026-03-04 09:42:34,239 INFO    MainThread:1469644 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to /libre/zelcoc/follmer/forecasting/navier-stokes/wandb/run-20260304_094234-0qgcmpet/logs/debug-internal.log
+2026-03-04 09:42:34,239 INFO    MainThread:1469644 [wandb_init.py:init():844] calling init triggers
+2026-03-04 09:42:34,240 INFO    MainThread:1469644 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2026-03-04 09:42:34,240 INFO    MainThread:1469644 [wandb_init.py:init():892] starting backend
+2026-03-04 09:42:34,455 INFO    MainThread:1469644 [wandb_init.py:init():895] sending inform_init request
+2026-03-04 09:42:34,460 INFO    MainThread:1469644 [wandb_init.py:init():903] backend started and connected
+2026-03-04 09:42:34,473 INFO    MainThread:1469644 [wandb_init.py:init():973] updated telemetry
+2026-03-04 09:42:34,477 INFO    MainThread:1469644 [wandb_init.py:init():997] communicating run to backend with 90.0 second timeout
+2026-03-04 09:42:35,327 INFO    MainThread:1469644 [wandb_init.py:init():1042] starting run threads in backend
+2026-03-04 09:42:35,489 INFO    MainThread:1469644 [wandb_run.py:_console_start():2524] atexit reg
+2026-03-04 09:42:35,489 INFO    MainThread:1469644 [wandb_run.py:_redirect():2373] redirect: wrap_raw
+2026-03-04 09:42:35,489 INFO    MainThread:1469644 [wandb_run.py:_redirect():2442] Wrapping output streams.
+2026-03-04 09:42:35,489 INFO    MainThread:1469644 [wandb_run.py:_redirect():2465] Redirects installed.
+2026-03-04 09:42:35,493 INFO    MainThread:1469644 [wandb_init.py:init():1082] run started, returning control to user process
+2026-03-04 09:42:35,494 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set dataset = nse - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,494 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb dataset nse None
+2026-03-04 09:42:35,495 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set debug = False - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,495 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb debug False None
+2026-03-04 09:42:35,495 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set sigma_coef = 1.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,495 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb sigma_coef 1.0 None
+2026-03-04 09:42:35,496 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set beta_fn = t^2 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,496 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb beta_fn t^2 None
+2026-03-04 09:42:35,496 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set EM_sample_steps = 50 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,496 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb EM_sample_steps 50 None
+2026-03-04 09:42:35,497 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set t_min_sampling = 0.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,497 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb t_min_sampling 0.0 None
+2026-03-04 09:42:35,497 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set t_max_sampling = 0.999 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,497 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb t_max_sampling 0.999 None
+2026-03-04 09:42:35,498 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set center_data = False - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,498 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb center_data False None
+2026-03-04 09:42:35,498 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set home = ./tmp_images/ - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,498 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb home ./tmp_images/ None
+2026-03-04 09:42:35,498 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set data_fname = ../../../fm_tutorial/dataset_gen/dataset/train.pt - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,498 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb data_fname ../../../fm_tutorial/dataset_gen/dataset/train.pt None
+2026-03-04 09:42:35,499 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set num_classes = 1 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,499 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb num_classes 1 None
+2026-03-04 09:42:35,499 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set lo_size = 128 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,499 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb lo_size 128 None
+2026-03-04 09:42:35,500 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set hi_size = 128 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,500 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb hi_size 128 None
+2026-03-04 09:42:35,500 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set time_lag = 2 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,500 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb time_lag 2 None
+2026-03-04 09:42:35,501 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set subsampling_ratio = 1.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,501 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb subsampling_ratio 1.0 None
+2026-03-04 09:42:35,501 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set C = 1 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,501 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb C 1 None
+2026-03-04 09:42:35,502 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set H = 128 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,502 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb H 128 None
+2026-03-04 09:42:35,502 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set W = 128 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,502 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb W 128 None
+2026-03-04 09:42:35,502 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set num_workers = 0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,502 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb num_workers 0 None
+2026-03-04 09:42:35,503 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set delta_t = 0.5 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,503 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb delta_t 0.5 None
+2026-03-04 09:42:35,503 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set wandb_project = nse - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,503 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb wandb_project nse None
+2026-03-04 09:42:35,504 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set wandb_entity = marikgoldstein - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,504 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb wandb_entity marikgoldstein None
+2026-03-04 09:42:35,504 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set use_wandb = True - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,504 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb use_wandb True None
+2026-03-04 09:42:35,505 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set noise_strength = 1.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,505 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb noise_strength 1.0 None
+2026-03-04 09:42:35,505 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set overfit = False - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,505 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb overfit False None
+2026-03-04 09:42:35,505 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set sample_every = 1000 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,506 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb sample_every 1000 None
+2026-03-04 09:42:35,506 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set print_loss_every = 100 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,506 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb print_loss_every 100 None
+2026-03-04 09:42:35,506 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set save_every = 1000 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,506 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb save_every 1000 None
+2026-03-04 09:42:35,507 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set batch_size = 8 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,507 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb batch_size 8 None
+2026-03-04 09:42:35,507 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set sampling_batch_size = 1 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,507 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb sampling_batch_size 1 None
+2026-03-04 09:42:35,508 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set t_min_train = 0.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,508 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb t_min_train 0.0 None
+2026-03-04 09:42:35,508 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set t_max_train = 1.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,508 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb t_max_train 1.0 None
+2026-03-04 09:42:35,509 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set max_grad_norm = 1.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,509 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb max_grad_norm 1.0 None
+2026-03-04 09:42:35,509 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set base_lr = 0.0002 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,509 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb base_lr 0.0002 None
+2026-03-04 09:42:35,509 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set max_steps = 100000 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,509 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb max_steps 100000 None
+2026-03-04 09:42:35,510 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_use_classes = False - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,510 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_use_classes False None
+2026-03-04 09:42:35,510 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_channels = 128 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,510 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_channels 128 None
+2026-03-04 09:42:35,511 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_resnet_block_groups = 8 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,511 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_resnet_block_groups 8 None
+2026-03-04 09:42:35,511 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_learned_sinusoidal_dim = 32 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,511 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_learned_sinusoidal_dim 32 None
+2026-03-04 09:42:35,512 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_attn_dim_head = 64 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,512 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_attn_dim_head 64 None
+2026-03-04 09:42:35,512 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_attn_heads = 4 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,512 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_attn_heads 4 None
+2026-03-04 09:42:35,512 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_learned_sinusoidal_cond = True - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,513 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_learned_sinusoidal_cond True None
+2026-03-04 09:42:35,513 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set unet_random_fourier_features = False - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,513 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb unet_random_fourier_features False None
+2026-03-04 09:42:35,513 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set old_pixel_norm = 0.27158164978027344 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,513 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb old_pixel_norm 0.27158164978027344 None
+2026-03-04 09:42:35,514 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set new_pixel_norm = 1.0 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,514 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb new_pixel_norm 1.0 None
+2026-03-04 09:42:35,514 INFO    MainThread:1469644 [wandb_config.py:__setitem__():155] [no run ID] config set wandb_run_id = 0qgcmpet - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7fd6d838b430>>
+2026-03-04 09:42:35,514 INFO    MainThread:1469644 [wandb_run.py:_config_callback():1403] config_cb wandb_run_id 0qgcmpet None
+2026-03-04 09:42:54,758 INFO    wandb-AsyncioManager-main:1469644 [service_client.py:_forward_responses():134] Reached EOF.
+2026-03-04 09:42:54,758 INFO    wandb-AsyncioManager-main:1469644 [mailbox.py:close():155] Closing mailbox, abandoning 1 handles.

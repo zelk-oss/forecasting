@@ -82,7 +82,7 @@ class Trainer:
             'step': self.step,
         }
         maybe_create_dir('./ckpts')
-        path = f"./ckpts/latest.pt"
+        path = f"../../ckpts/latest.pt"
         torch.save(D, path)
         print("saved ckpt at ", path)
 
@@ -402,7 +402,7 @@ class Config:
             maybe_create_dir(self.home)
 
             # self.data_fname = 'nse_data_tiny.pt'
-            self.data_fname = '../../../fm_tutorial/dataset_gen/dataset/train_128.pt'
+            self.data_fname = '../../../fm_tutorial/dataset_gen/dataset/train.pt'
             self.num_classes = 1
             # self.lo_size = 64
             self.lo_size = 128 # 512 for full resolution

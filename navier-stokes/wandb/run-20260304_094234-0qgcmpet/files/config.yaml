@@ -1,0 +1,149 @@
+_wandb:
+    value:
+        cli_version: 0.25.0
+        e:
+            nhup61rg0t8la5fa5uxi61qima2adk4d:
+                codePath: navier-stokes/main.py
+                codePathLocal: main.py
+                cpu_count: 40
+                cpu_count_logical: 80
+                cudaVersion: "12.6"
+                disk:
+                    /:
+                        total: "315926315008"
+                        used: "67962687488"
+                email: zelcochiara@gmail.com
+                executable: /libre/zelcoc/miniconda3/envs/follmer/bin/python3
+                git:
+                    commit: 3487320de369c1cf4fa4d788448c94631508a902
+                    remote: git@github.com:zelk-oss/forecasting.git
+                gpu: NVIDIA RTX A6000
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-4f9edc67-027a-7350-f08d-05a1e1f8c3dd
+                    - architecture: Ampere
+                      cudaCores: 10752
+                      memoryTotal: "51527024640"
+                      name: NVIDIA RTX A6000
+                      uuid: GPU-1f95b383-be9a-3651-7abc-47bf684934e0
+                host: kaitain
+                memory:
+                    total: "270034124800"
+                os: Linux-5.15.0-140-generic-x86_64-with-glibc2.35
+                program: /libre/zelcoc/follmer/forecasting/navier-stokes/main.py
+                python: CPython 3.10.19
+                root: /libre/zelcoc/follmer/forecasting/navier-stokes
+                startedAt: "2026-03-04T08:42:34.238595Z"
+                writerId: nhup61rg0t8la5fa5uxi61qima2adk4d
+        m: []
+        python_version: 3.10.19
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 19
+                - 61
+            "4": 3.10.19
+            "5": 0.25.0
+            "12": 0.25.0
+            "13": linux-x86_64
+C:
+    value: 1
+EM_sample_steps:
+    value: 50
+H:
+    value: 128
+W:
+    value: 128
+base_lr:
+    value: 0.0002
+batch_size:
+    value: 8
+beta_fn:
+    value: t^2
+center_data:
+    value: false
+data_fname:
+    value: ../../../fm_tutorial/dataset_gen/dataset/train.pt
+dataset:
+    value: nse
+debug:
+    value: false
+delta_t:
+    value: 0.5
+hi_size:
+    value: 128
+home:
+    value: ./tmp_images/
+lo_size:
+    value: 128
+max_grad_norm:
+    value: 1
+max_steps:
+    value: 100000
+new_pixel_norm:
+    value: 1
+noise_strength:
+    value: 1
+num_classes:
+    value: 1
+num_workers:
+    value: 0
+old_pixel_norm:
+    value: 0.27158164978027344
+overfit:
+    value: false
+print_loss_every:
+    value: 100
+sample_every:
+    value: 1000
+sampling_batch_size:
+    value: 1
+save_every:
+    value: 1000
+sigma_coef:
+    value: 1
+subsampling_ratio:
+    value: 1
+t_max_sampling:
+    value: 0.999
+t_max_train:
+    value: 1
+t_min_sampling:
+    value: 0
+t_min_train:
+    value: 0
+time_lag:
+    value: 2
+unet_attn_dim_head:
+    value: 64
+unet_attn_heads:
+    value: 4
+unet_channels:
+    value: 128
+unet_learned_sinusoidal_cond:
+    value: true
+unet_learned_sinusoidal_dim:
+    value: 32
+unet_random_fourier_features:
+    value: false
+unet_resnet_block_groups:
+    value: 8
+unet_use_classes:
+    value: false
+use_wandb:
+    value: true
+wandb_entity:
+    value: marikgoldstein
+wandb_project:
+    value: nse
+wandb_run_id:
+    value: 0qgcmpet

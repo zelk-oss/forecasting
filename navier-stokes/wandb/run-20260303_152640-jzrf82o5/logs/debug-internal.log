@@ -4,3 +4,9 @@
 {"time":"2026-03-03T15:26:41.320840491+01:00","level":"INFO","msg":"stream: started","id":"jzrf82o5"}
 {"time":"2026-03-03T15:26:41.320843146+01:00","level":"INFO","msg":"writer: started","stream_id":"jzrf82o5"}
 {"time":"2026-03-03T15:26:41.320888152+01:00","level":"INFO","msg":"sender: started","stream_id":"jzrf82o5"}
+{"time":"2026-03-03T17:46:56.97367186+01:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/zelcochiara-/navier-stokes/jzrf82o5/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2026-03-03T20:47:45.281134135+01:00","level":"INFO","msg":"stream: closing","id":"jzrf82o5"}
+{"time":"2026-03-03T20:47:46.102568885+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-03T20:47:46.313364252+01:00","level":"INFO","msg":"handler: closed","stream_id":"jzrf82o5"}
+{"time":"2026-03-03T20:47:46.313533327+01:00","level":"INFO","msg":"sender: closed","stream_id":"jzrf82o5"}
+{"time":"2026-03-03T20:47:46.313568365+01:00","level":"INFO","msg":"stream: closed","id":"jzrf82o5"}

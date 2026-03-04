@@ -1,0 +1,96 @@
+finished wandb setup
+dataset nse
+debug False
+sigma_coef 1.0
+beta_fn t^2
+EM_sample_steps 50
+t_min_sampling 0.0
+t_max_sampling 0.999
+center_data False
+home ./tmp_images/
+data_fname ../../../fm_tutorial/dataset_gen/dataset/train.pt
+num_classes 1
+lo_size 128
+hi_size 128
+time_lag 2
+subsampling_ratio 1.0
+C 1
+H 128
+W 128
+num_workers 0
+delta_t 0.5
+wandb_project nse
+wandb_entity marikgoldstein
+use_wandb True
+noise_strength 1.0
+overfit False
+sample_every 1000
+print_loss_every 100
+save_every 1000
+batch_size 8
+sampling_batch_size 1
+t_min_train 0.0
+t_max_train 1.0
+max_grad_norm 1.0
+base_lr 0.0002
+max_steps 100000
+unet_use_classes False
+unet_channels 128
+unet_resnet_block_groups 8
+unet_learned_sinusoidal_dim 32
+unet_attn_dim_head 64
+unet_attn_heads 4
+unet_learned_sinusoidal_cond True
+unet_random_fourier_features False
+old_pixel_norm 0.27158164978027344
+new_pixel_norm 1.0
+wandb_run_id 0qgcmpet
+starting fit
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+starting training
+Traceback (most recent call last):
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 504, in <module>
+    main()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 501, in main
+    trainer.fit()
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 367, in fit
+    self.do_step(batch_idx, batch)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 336, in do_step
+    loss = self.training_step(D)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/main.py", line 246, in training_step
+    model_out = self.model(D['zt'], D['t'], D['label'], cond = D['cond'])
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/utils.py", line 142, in forward
+    out = self._arch(zt, t, y)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/unet.py", line 408, in forward
+    x = block1(x, t, c)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/unet.py", line 203, in forward
+    h = self.block2(h)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/follmer/forecasting/navier-stokes/unet.py", line 162, in forward
+    x = self.norm(x)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/modules/normalization.py", line 327, in forward
+    return F.group_norm(input, self.num_groups, self.weight, self.bias, self.eps)
+  File "/libre/zelcoc/miniconda3/envs/follmer/lib/python3.10/site-packages/torch/nn/functional.py", line 2990, in group_norm
+    return torch.group_norm(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 47.43 GiB of which 492.69 MiB is free. Including non-PyTorch memory, this process has 46.93 GiB memory in use. Of the allocated memory 46.19 GiB is allocated by PyTorch, and 434.68 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
