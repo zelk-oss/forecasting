@@ -405,9 +405,9 @@ class Config:
             self.data_fname = '../../../fm_tutorial/dataset_gen/dataset/train.pt'
             self.num_classes = 1
             # self.lo_size = 64
-            self.lo_size = 128 # 512 for full resolution
+            self.lo_size = 512 # 512 for full resolution
             # self.hi_size = 128
-            self.hi_size = 128 # 512 for full resolution
+            self.hi_size = 512 # 512 for full resolution
             self.time_lag = 2
             self.subsampling_ratio = 1.0 
             self.grid_kwargs = {'normalize': False}
@@ -452,12 +452,12 @@ class Config:
         
         # arch
         self.unet_use_classes = True if self.dataset == 'cifar' else False
-        self.unet_channels = 128 # 128
-        self.unet_dim_mults = (1, 2, 2, 2) 
+        self.unet_channels = 64 # 128
+        self.unet_dim_mults = (1, 2, 2, 2, 2) # (1, 2, 2, 2) 
         self.unet_resnet_block_groups = 8 # 8
         self.unet_learned_sinusoidal_dim = 32
-        self.unet_attn_dim_head = 64 # 64
-        self.unet_attn_heads = 4 # 4
+        self.unet_attn_dim_head = 32 # 64
+        self.unet_attn_heads = 2 # 4
         self.unet_learned_sinusoidal_cond = True
         self.unet_random_fourier_features = False
 
