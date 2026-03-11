@@ -1,0 +1,12 @@
+{"time":"2026-03-05T17:58:01.897694085+01:00","level":"INFO","msg":"stream: starting","core version":"0.25.0"}
+{"time":"2026-03-05T17:58:02.2337031+01:00","level":"INFO","msg":"stream: created new stream","id":"749tcpvn"}
+{"time":"2026-03-05T17:58:02.233806503+01:00","level":"INFO","msg":"handler: started","stream_id":"749tcpvn"}
+{"time":"2026-03-05T17:58:02.233995689+01:00","level":"INFO","msg":"stream: started","id":"749tcpvn"}
+{"time":"2026-03-05T17:58:02.234049917+01:00","level":"INFO","msg":"writer: started","stream_id":"749tcpvn"}
+{"time":"2026-03-05T17:58:02.234060256+01:00","level":"INFO","msg":"sender: started","stream_id":"749tcpvn"}
+{"time":"2026-03-05T21:54:33.884778968+01:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/zelcochiara-/navier-stokes/749tcpvn/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2026-03-06T04:05:21.803775521+01:00","level":"INFO","msg":"stream: closing","id":"749tcpvn"}
+{"time":"2026-03-06T04:05:22.999631688+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-06T04:05:23.339812167+01:00","level":"INFO","msg":"handler: closed","stream_id":"749tcpvn"}
+{"time":"2026-03-06T04:05:23.339991238+01:00","level":"INFO","msg":"sender: closed","stream_id":"749tcpvn"}
+{"time":"2026-03-06T04:05:23.340040243+01:00","level":"INFO","msg":"stream: closed","id":"749tcpvn"}
