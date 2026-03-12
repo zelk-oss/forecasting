@@ -1,0 +1,101 @@
+Loading pytorch-gpu/py3/2.3.0
+  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
+    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
+    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
++ mkdir -p outputs
++ srun python main.py --beta_fn 't^2' --sigma_coef 0.1 --use_wandb 1 --debug 0
+dataset nse
+load_path None
+use_wandb 1
+sigma_coef 0.1
+beta_fn t^2
+debug 0
+sample_only 0
+overfit 0
+SELF DEBUG IS False
+OVERFIT MODE (USEFUL FOR DEBUGGING) IS False
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 29,988,753
+wandb: Tracking run with wandb version 0.25.1
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /lustre/fswork/projects/rech/wbg/ukv59en/forecasting/navier-stokes/wandb/offline-run-20260312_181350-s6g731f1
+wandb: Detected [huggingface_hub.inference] in use.
+wandb: Use W&B Weave for improved LLM call tracing. Install Weave with `pip install weave` then add `import weave` to the top of your script.
+wandb: For more information, check out the docs at: https://weave-docs.wandb.ai/
+finished wandb setup
+dataset nse
+debug False
+sigma_coef 0.1
+beta_fn t^2
+EM_sample_steps 50
+t_min_sampling 0.0
+t_max_sampling 0.999
+center_data False
+home ./tmp_images/
+data_fname ../dataset/train_128_dt10.pt
+num_classes 1
+lo_size 128
+hi_size 128
+time_lag 2
+subsampling_ratio 1.0
+C 1
+H 128
+W 128
+num_workers 0
+delta_t 0.5
+wandb_project nse
+wandb_entity marikgoldstein
+use_wandb True
+noise_strength 1.0
+overfit False
+sample_every 1000
+print_loss_every 100
+save_every 1000
+batch_size 16
+sampling_batch_size 1
+t_min_train 0.0
+t_max_train 1.0
+max_grad_norm 1.0
+base_lr 0.0002
+max_steps 100000
+unet_use_classes False
+unet_channels 128
+unet_resnet_block_groups 8
+unet_learned_sinusoidal_dim 32
+unet_attn_dim_head 64
+unet_attn_heads 4
+unet_learned_sinusoidal_cond True
+unet_random_fourier_features False
+old_pixel_norm 0.2677770256996155
+new_pixel_norm 1.0
+wandb_run_id s6g731f1
+starting fit
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+starting training
+/gpfslocalsup/pub/anaconda-py3/2023.09/envs/pytorch-gpu-2.3.0+py3.11.5/lib/python3.11/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at /gpfs7kro/gpfslocalsup/src/pub/anaconda-py3/2023.09/pytorch-gpu-2.3.0+py3.11.5+cuda-12.2/pytorch-2.3.0/aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+Grad step 100. Loss:779.7288818359375
+Grad step 200. Loss:632.94677734375
+Grad step 300. Loss:467.00213623046875
+Grad step 400. Loss:380.0206298828125
+Grad step 500. Loss:340.235595703125
+Grad step 600. Loss:547.8334350585938
+Grad step 700. Loss:320.15802001953125
+Grad step 800. Loss:347.70086669921875
+Grad step 900. Loss:320.91619873046875
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 1000. Loss:306.0098571777344
+saving!
+making ../../checkpoints
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 1100. Loss:310.82666015625
+Grad step 1200. Loss:296.59808349609375
+Grad step 1300. Loss:246.40505981445312
+Grad step 1400. Loss:244.23748779296875
+Grad step 1500. Loss:258.0649719238281
+Grad step 1600. Loss:262.7485656738281
+Grad step 1700. Loss:229.2442626953125

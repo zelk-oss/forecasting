@@ -402,7 +402,7 @@ class Config:
             maybe_create_dir(self.home)
 
             # self.data_fname = 'nse_data_tiny.pt'
-            self.data_fname = '../../../fm_tutorial/dataset_gen/dataset/train_128_dt10.pt'
+            self.data_fname = ../'dataset/train_128_dt10.pt'
             self.num_classes = 1
             # self.lo_size = 64
             self.lo_size = 128 # 512 for full resolution
