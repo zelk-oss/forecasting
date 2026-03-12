@@ -1,6 +1,10 @@
 #!/bin/bash
 name="training_run"
 outdir="outputs"
+
+BETA='t^2'
+SIGMA=0.1
+
 echo "Launching training job: $name"
 
 sbatch <<EOT
@@ -25,8 +29,5 @@ module load pytorch-gpu/py3/2.3.0
 set -x
 mkdir -p $outdir
 
-# Your actual training command:
-BETA='t^2'
-SIGMA=0.1
 srun python main.py --beta_fn ${BETA} --sigma_coef ${SIGMA} --use_wandb 1 --debug 0
 EOT

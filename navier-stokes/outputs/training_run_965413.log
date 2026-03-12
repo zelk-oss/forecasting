@@ -1,0 +1,15 @@
+Loading pytorch-gpu/py3/2.3.0
+  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
+    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
+    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
++ mkdir -p outputs
++ BETA='t^2'
++ SIGMA=0.1
++ srun python main.py --beta_fn --sigma_coef --use_wandb 1 --debug 0
+usage: main.py [-h] [--dataset {cifar,nse}] [--load_path LOAD_PATH]
+               [--use_wandb USE_WANDB] [--sigma_coef SIGMA_COEF]
+               [--beta_fn {t,t^2}] [--debug DEBUG] [--sample_only SAMPLE_ONLY]
+               [--overfit OVERFIT]
+main.py: error: argument --beta_fn: expected one argument
+srun: error: r8i1n7: task 0: Exited with exit code 2
+srun: Terminating StepId=965413.0
