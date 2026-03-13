@@ -23,7 +23,7 @@ sbatch <<EOT
 #SBATCH --hint=nomultithread
 # NO --qos line = uses default qos_gpu-t3, which allows up to 20 hours
 
-module purgecd  
+module purge 
 module load pytorch-gpu/py3/2.3.0
 
 export WANDB_MODE=offline

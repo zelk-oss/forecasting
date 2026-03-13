@@ -99,3 +99,1340 @@ Grad step 1400. Loss:244.23748779296875
 Grad step 1500. Loss:258.0649719238281
 Grad step 1600. Loss:262.7485656738281
 Grad step 1700. Loss:229.2442626953125
+Grad step 1800. Loss:258.381103515625
+Grad step 1900. Loss:277.47491455078125
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 2000. Loss:249.80123901367188
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 2100. Loss:227.43675231933594
+Grad step 2200. Loss:219.81390380859375
+Grad step 2300. Loss:242.11575317382812
+Grad step 2400. Loss:255.13824462890625
+Grad step 2500. Loss:239.88206481933594
+Grad step 2600. Loss:227.00894165039062
+Grad step 2700. Loss:215.0917205810547
+Grad step 2800. Loss:270.72943115234375
+Grad step 2900. Loss:208.56906127929688
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 3000. Loss:210.98684692382812
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 3100. Loss:212.51275634765625
+Grad step 3200. Loss:222.37191772460938
+Grad step 3300. Loss:208.01817321777344
+Grad step 3400. Loss:230.03724670410156
+Grad step 3500. Loss:216.28460693359375
+Grad step 3600. Loss:229.72096252441406
+Grad step 3700. Loss:232.20428466796875
+Grad step 3800. Loss:230.85086059570312
+Grad step 3900. Loss:214.496337890625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 4000. Loss:213.7978057861328
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 4100. Loss:204.7949981689453
+Grad step 4200. Loss:191.91342163085938
+Grad step 4300. Loss:201.6986541748047
+Grad step 4400. Loss:213.09402465820312
+Grad step 4500. Loss:173.04434204101562
+Grad step 4600. Loss:211.35653686523438
+Grad step 4700. Loss:173.5323486328125
+Grad step 4800. Loss:201.78720092773438
+Grad step 4900. Loss:190.318115234375
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 5000. Loss:208.49273681640625
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 5100. Loss:214.02920532226562
+Grad step 5200. Loss:219.77349853515625
+Grad step 5300. Loss:189.60946655273438
+Grad step 5400. Loss:206.22451782226562
+Grad step 5500. Loss:194.90072631835938
+Grad step 5600. Loss:189.5559844970703
+Grad step 5700. Loss:209.8634033203125
+Grad step 5800. Loss:182.64804077148438
+Grad step 5900. Loss:193.0035400390625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 6000. Loss:176.66656494140625
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 6100. Loss:193.16268920898438
+Grad step 6200. Loss:211.33877563476562
+Grad step 6300. Loss:193.08853149414062
+Grad step 6400. Loss:204.7977294921875
+Grad step 6500. Loss:196.6815185546875
+Grad step 6600. Loss:197.62791442871094
+Grad step 6700. Loss:187.2335205078125
+Grad step 6800. Loss:179.88897705078125
+Grad step 6900. Loss:191.82032775878906
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 7000. Loss:183.84451293945312
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 7100. Loss:189.89910888671875
+Grad step 7200. Loss:193.59359741210938
+Grad step 7300. Loss:211.49517822265625
+Grad step 7400. Loss:197.51791381835938
+Grad step 7500. Loss:200.05770874023438
+Grad step 7600. Loss:167.7197265625
+Grad step 7700. Loss:205.70126342773438
+Grad step 7800. Loss:200.9503936767578
+Grad step 7900. Loss:195.61610412597656
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 8000. Loss:182.56570434570312
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 8100. Loss:200.33258056640625
+Grad step 8200. Loss:195.9981689453125
+Grad step 8300. Loss:174.8460693359375
+Grad step 8400. Loss:210.16305541992188
+Grad step 8500. Loss:166.95138549804688
+Grad step 8600. Loss:183.6737060546875
+Grad step 8700. Loss:198.71261596679688
+Grad step 8800. Loss:172.3318634033203
+Grad step 8900. Loss:178.0361328125
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 9000. Loss:181.66343688964844
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 9100. Loss:177.3011016845703
+Grad step 9200. Loss:176.8687744140625
+Grad step 9300. Loss:192.58102416992188
+Grad step 9400. Loss:199.48739624023438
+Grad step 9500. Loss:187.98532104492188
+Grad step 9600. Loss:181.75759887695312
+Grad step 9700. Loss:189.43557739257812
+Grad step 9800. Loss:187.68348693847656
+Grad step 9900. Loss:185.1602325439453
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 10000. Loss:206.00778198242188
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 10100. Loss:188.14617919921875
+Grad step 10200. Loss:160.04827880859375
+Grad step 10300. Loss:189.6491241455078
+Grad step 10400. Loss:180.6827850341797
+Grad step 10500. Loss:180.25994873046875
+Grad step 10600. Loss:168.45228576660156
+Grad step 10700. Loss:168.92388916015625
+Grad step 10800. Loss:162.11224365234375
+Grad step 10900. Loss:175.176025390625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 11000. Loss:174.32568359375
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 11100. Loss:173.12875366210938
+Grad step 11200. Loss:187.555419921875
+Grad step 11300. Loss:179.56942749023438
+Grad step 11400. Loss:141.64309692382812
+Grad step 11500. Loss:185.1949462890625
+Grad step 11600. Loss:146.85238647460938
+Grad step 11700. Loss:173.44212341308594
+Grad step 11800. Loss:154.02328491210938
+Grad step 11900. Loss:154.359375
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 12000. Loss:172.46035766601562
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 12100. Loss:163.167724609375
+Grad step 12200. Loss:172.3845672607422
+Grad step 12300. Loss:148.74473571777344
+Grad step 12400. Loss:144.98300170898438
+Grad step 12500. Loss:171.18106079101562
+Grad step 12600. Loss:173.76763916015625
+Grad step 12700. Loss:164.17921447753906
+Grad step 12800. Loss:170.19996643066406
+Grad step 12900. Loss:165.43893432617188
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 13000. Loss:163.00576782226562
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 13100. Loss:143.63885498046875
+Grad step 13200. Loss:154.07406616210938
+Grad step 13300. Loss:174.3677978515625
+Grad step 13400. Loss:160.55300903320312
+Grad step 13500. Loss:153.18328857421875
+Grad step 13600. Loss:153.2745361328125
+Grad step 13700. Loss:168.06744384765625
+Grad step 13800. Loss:136.3337860107422
+Grad step 13900. Loss:142.17507934570312
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 14000. Loss:168.0028839111328
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 14100. Loss:136.607177734375
+Grad step 14200. Loss:159.68173217773438
+Grad step 14300. Loss:143.48577880859375
+Grad step 14400. Loss:145.49258422851562
+Grad step 14500. Loss:156.35910034179688
+Grad step 14600. Loss:153.9043426513672
+Grad step 14700. Loss:150.65647888183594
+Grad step 14800. Loss:161.950927734375
+Grad step 14900. Loss:143.00314331054688
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 15000. Loss:145.130126953125
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 15100. Loss:143.22377014160156
+Grad step 15200. Loss:150.87193298339844
+Grad step 15300. Loss:150.88125610351562
+Grad step 15400. Loss:146.54574584960938
+Grad step 15500. Loss:158.6136932373047
+Grad step 15600. Loss:154.2589111328125
+Grad step 15700. Loss:156.48822021484375
+Grad step 15800. Loss:150.76443481445312
+Grad step 15900. Loss:154.46307373046875
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 16000. Loss:125.20216369628906
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 16100. Loss:138.6807403564453
+Grad step 16200. Loss:143.5955047607422
+Grad step 16300. Loss:159.56503295898438
+Grad step 16400. Loss:141.7886199951172
+Grad step 16500. Loss:135.3872833251953
+Grad step 16600. Loss:154.5499267578125
+Grad step 16700. Loss:143.27059936523438
+Grad step 16800. Loss:158.7226104736328
+Grad step 16900. Loss:139.14808654785156
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 17000. Loss:173.18931579589844
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 17100. Loss:139.95680236816406
+Grad step 17200. Loss:132.493408203125
+Grad step 17300. Loss:145.21969604492188
+Grad step 17400. Loss:159.91949462890625
+Grad step 17500. Loss:136.85043334960938
+Grad step 17600. Loss:128.20819091796875
+Grad step 17700. Loss:136.33474731445312
+Grad step 17800. Loss:136.33294677734375
+Grad step 17900. Loss:111.89942932128906
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 18000. Loss:134.86219787597656
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 18100. Loss:138.44674682617188
+Grad step 18200. Loss:155.0693359375
+Grad step 18300. Loss:154.72006225585938
+Grad step 18400. Loss:134.60745239257812
+Grad step 18500. Loss:157.11968994140625
+Grad step 18600. Loss:146.42495727539062
+Grad step 18700. Loss:134.8310546875
+Grad step 18800. Loss:127.643310546875
+Grad step 18900. Loss:147.01678466796875
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 19000. Loss:148.53744506835938
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 19100. Loss:144.84918212890625
+Grad step 19200. Loss:118.07162475585938
+Grad step 19300. Loss:136.72201538085938
+Grad step 19400. Loss:141.80601501464844
+Grad step 19500. Loss:112.74545288085938
+Grad step 19600. Loss:124.15164184570312
+Grad step 19700. Loss:129.7840576171875
+Grad step 19800. Loss:123.22492980957031
+Grad step 19900. Loss:128.91705322265625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 20000. Loss:131.09600830078125
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 20100. Loss:137.576171875
+Grad step 20200. Loss:144.27093505859375
+Grad step 20300. Loss:138.62872314453125
+Grad step 20400. Loss:132.7506103515625
+Grad step 20500. Loss:149.16888427734375
+Grad step 20600. Loss:133.7517852783203
+Grad step 20700. Loss:133.78672790527344
+Grad step 20800. Loss:135.76809692382812
+Grad step 20900. Loss:136.0829315185547
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 21000. Loss:126.32860565185547
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 21100. Loss:141.5505828857422
+Grad step 21200. Loss:127.43533325195312
+Grad step 21300. Loss:148.77557373046875
+Grad step 21400. Loss:137.96792602539062
+Grad step 21500. Loss:126.73118591308594
+Grad step 21600. Loss:134.91238403320312
+Grad step 21700. Loss:140.97421264648438
+Grad step 21800. Loss:116.67626953125
+Grad step 21900. Loss:112.35305786132812
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 22000. Loss:122.55912017822266
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 22100. Loss:126.88299560546875
+Grad step 22200. Loss:141.52365112304688
+Grad step 22300. Loss:123.22015380859375
+Grad step 22400. Loss:103.98760986328125
+Grad step 22500. Loss:133.78631591796875
+Grad step 22600. Loss:130.62144470214844
+Grad step 22700. Loss:119.10403442382812
+Grad step 22800. Loss:112.68034362792969
+Grad step 22900. Loss:88.54006958007812
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 23000. Loss:137.0087127685547
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 23100. Loss:126.08853149414062
+Grad step 23200. Loss:129.46774291992188
+Grad step 23300. Loss:126.83348083496094
+Grad step 23400. Loss:123.34951782226562
+Grad step 23500. Loss:122.28224182128906
+Grad step 23600. Loss:113.20709228515625
+Grad step 23700. Loss:140.24557495117188
+Grad step 23800. Loss:127.14401245117188
+Grad step 23900. Loss:118.67865753173828
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 24000. Loss:137.0393829345703
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 24100. Loss:136.19093322753906
+Grad step 24200. Loss:121.61289978027344
+Grad step 24300. Loss:129.89556884765625
+Grad step 24400. Loss:135.7702178955078
+Grad step 24500. Loss:147.01632690429688
+Grad step 24600. Loss:123.2448501586914
+Grad step 24700. Loss:90.56880950927734
+Grad step 24800. Loss:122.6416015625
+Grad step 24900. Loss:132.97970581054688
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 25000. Loss:115.0606689453125
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 25100. Loss:116.12818908691406
+Grad step 25200. Loss:121.59593200683594
+Grad step 25300. Loss:124.06851959228516
+Grad step 25400. Loss:102.5247802734375
+Grad step 25500. Loss:117.28007507324219
+Grad step 25600. Loss:114.86515808105469
+Grad step 25700. Loss:103.33595275878906
+Grad step 25800. Loss:123.70669555664062
+Grad step 25900. Loss:105.87313842773438
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 26000. Loss:120.58759307861328
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 26100. Loss:122.91889190673828
+Grad step 26200. Loss:101.98208618164062
+Grad step 26300. Loss:102.1494140625
+Grad step 26400. Loss:88.89097595214844
+Grad step 26500. Loss:140.64971923828125
+Grad step 26600. Loss:116.62699890136719
+Grad step 26700. Loss:108.22108459472656
+Grad step 26800. Loss:122.93090057373047
+Grad step 26900. Loss:101.36537170410156
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 27000. Loss:115.86577606201172
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 27100. Loss:120.15597534179688
+Grad step 27200. Loss:101.66694641113281
+Grad step 27300. Loss:123.16169738769531
+Grad step 27400. Loss:119.04158020019531
+Grad step 27500. Loss:115.92115783691406
+Grad step 27600. Loss:104.4393081665039
+Grad step 27700. Loss:124.66142272949219
+Grad step 27800. Loss:112.36940002441406
+Grad step 27900. Loss:101.81465911865234
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 28000. Loss:128.64971923828125
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 28100. Loss:105.52538299560547
+Grad step 28200. Loss:139.5770721435547
+Grad step 28300. Loss:119.56649780273438
+Grad step 28400. Loss:104.1473388671875
+Grad step 28500. Loss:98.78512573242188
+Grad step 28600. Loss:126.87828063964844
+Grad step 28700. Loss:123.62528991699219
+Grad step 28800. Loss:95.06407165527344
+Grad step 28900. Loss:119.6470947265625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 29000. Loss:122.70399475097656
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 29100. Loss:103.92460632324219
+Grad step 29200. Loss:132.57037353515625
+Grad step 29300. Loss:112.12943267822266
+Grad step 29400. Loss:120.42623901367188
+Grad step 29500. Loss:132.317138671875
+Grad step 29600. Loss:120.91788482666016
+Grad step 29700. Loss:130.59707641601562
+Grad step 29800. Loss:101.08423614501953
+Grad step 29900. Loss:97.1549072265625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 30000. Loss:122.10073852539062
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 30100. Loss:117.68132019042969
+Grad step 30200. Loss:113.90423583984375
+Grad step 30300. Loss:117.32133483886719
+Grad step 30400. Loss:109.5152587890625
+Grad step 30500. Loss:107.32200622558594
+Grad step 30600. Loss:99.03038024902344
+Grad step 30700. Loss:115.66910552978516
+Grad step 30800. Loss:114.368408203125
+Grad step 30900. Loss:114.18069458007812
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 31000. Loss:111.36308288574219
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 31100. Loss:125.30445861816406
+Grad step 31200. Loss:116.37126922607422
+Grad step 31300. Loss:82.59075927734375
+Grad step 31400. Loss:108.71415710449219
+Grad step 31500. Loss:112.15583801269531
+Grad step 31600. Loss:114.74807739257812
+Grad step 31700. Loss:116.25390625
+Grad step 31800. Loss:100.07402038574219
+Grad step 31900. Loss:90.90306091308594
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 32000. Loss:117.14617919921875
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 32100. Loss:100.38499450683594
+Grad step 32200. Loss:113.33442687988281
+Grad step 32300. Loss:118.84061431884766
+Grad step 32400. Loss:108.8690185546875
+Grad step 32500. Loss:113.68577575683594
+Grad step 32600. Loss:118.00674438476562
+Grad step 32700. Loss:117.8768310546875
+Grad step 32800. Loss:109.7525405883789
+Grad step 32900. Loss:121.27630615234375
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 33000. Loss:108.42805480957031
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 33100. Loss:103.4444808959961
+Grad step 33200. Loss:83.24429321289062
+Grad step 33300. Loss:98.92621612548828
+Grad step 33400. Loss:109.47433471679688
+Grad step 33500. Loss:98.7537612915039
+Grad step 33600. Loss:111.87586212158203
+Grad step 33700. Loss:114.28086853027344
+Grad step 33800. Loss:118.36727905273438
+Grad step 33900. Loss:106.57504272460938
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 34000. Loss:94.0177001953125
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 34100. Loss:107.29441833496094
+Grad step 34200. Loss:109.24447631835938
+Grad step 34300. Loss:103.20942687988281
+Grad step 34400. Loss:115.39962005615234
+Grad step 34500. Loss:96.21153259277344
+Grad step 34600. Loss:85.56449890136719
+Grad step 34700. Loss:92.49839782714844
+Grad step 34800. Loss:116.96511840820312
+Grad step 34900. Loss:117.58792114257812
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 35000. Loss:115.70384216308594
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 35100. Loss:106.96350860595703
+Grad step 35200. Loss:96.71337890625
+Grad step 35300. Loss:111.6102294921875
+Grad step 35400. Loss:108.75303649902344
+Grad step 35500. Loss:94.45469665527344
+Grad step 35600. Loss:97.89346313476562
+Grad step 35700. Loss:107.99629974365234
+Grad step 35800. Loss:122.03491973876953
+Grad step 35900. Loss:88.99332427978516
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 36000. Loss:106.91287994384766
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 36100. Loss:125.11720275878906
+Grad step 36200. Loss:119.08187866210938
+Grad step 36300. Loss:100.87351989746094
+Grad step 36400. Loss:94.69744873046875
+Grad step 36500. Loss:115.21773529052734
+Grad step 36600. Loss:103.82313537597656
+Grad step 36700. Loss:119.93577575683594
+Grad step 36800. Loss:108.7821273803711
+Grad step 36900. Loss:104.2271728515625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 37000. Loss:115.24060821533203
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 37100. Loss:91.91505432128906
+Grad step 37200. Loss:129.39788818359375
+Grad step 37300. Loss:110.4051742553711
+Grad step 37400. Loss:83.96354675292969
+Grad step 37500. Loss:102.71858215332031
+Grad step 37600. Loss:106.92608642578125
+Grad step 37700. Loss:92.13036346435547
+Grad step 37800. Loss:111.22455596923828
+Grad step 37900. Loss:88.61910247802734
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 38000. Loss:75.20242309570312
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 38100. Loss:106.08907318115234
+Grad step 38200. Loss:99.4073486328125
+Grad step 38300. Loss:122.91587829589844
+Grad step 38400. Loss:96.42431640625
+Grad step 38500. Loss:96.37389373779297
+Grad step 38600. Loss:117.21781158447266
+Grad step 38700. Loss:102.16322326660156
+Grad step 38800. Loss:106.76438903808594
+Grad step 38900. Loss:96.8912124633789
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 39000. Loss:110.78947448730469
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 39100. Loss:92.90525817871094
+Grad step 39200. Loss:120.08976745605469
+Grad step 39300. Loss:89.6893539428711
+Grad step 39400. Loss:87.65150451660156
+Grad step 39500. Loss:102.00947570800781
+Grad step 39600. Loss:88.60383605957031
+Grad step 39700. Loss:116.33330535888672
+Grad step 39800. Loss:104.76014709472656
+Grad step 39900. Loss:97.23471069335938
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 40000. Loss:96.71666717529297
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 40100. Loss:108.86739349365234
+Grad step 40200. Loss:113.962158203125
+Grad step 40300. Loss:112.63665771484375
+Grad step 40400. Loss:96.41012573242188
+Grad step 40500. Loss:88.25114440917969
+Grad step 40600. Loss:95.03388977050781
+Grad step 40700. Loss:110.48342895507812
+Grad step 40800. Loss:102.50361633300781
+Grad step 40900. Loss:98.07559204101562
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 41000. Loss:113.63717651367188
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 41100. Loss:99.31584167480469
+Grad step 41200. Loss:91.49876403808594
+Grad step 41300. Loss:82.05912780761719
+Grad step 41400. Loss:88.27021789550781
+Grad step 41500. Loss:96.55038452148438
+Grad step 41600. Loss:98.86605834960938
+Grad step 41700. Loss:83.70520782470703
+Grad step 41800. Loss:76.30990600585938
+Grad step 41900. Loss:105.00112915039062
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 42000. Loss:101.44221496582031
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 42100. Loss:114.64942932128906
+Grad step 42200. Loss:93.19306945800781
+Grad step 42300. Loss:80.13006591796875
+Grad step 42400. Loss:113.83784484863281
+Grad step 42500. Loss:98.84091186523438
+Grad step 42600. Loss:94.87054443359375
+Grad step 42700. Loss:80.67505645751953
+Grad step 42800. Loss:104.34764099121094
+Grad step 42900. Loss:110.4815902709961
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 43000. Loss:91.8775405883789
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 43100. Loss:102.42546844482422
+Grad step 43200. Loss:110.52593994140625
+Grad step 43300. Loss:106.91044616699219
+Grad step 43400. Loss:93.80184173583984
+Grad step 43500. Loss:104.3047866821289
+Grad step 43600. Loss:88.60856628417969
+Grad step 43700. Loss:94.70695495605469
+Grad step 43800. Loss:87.45623779296875
+Grad step 43900. Loss:119.10693359375
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 44000. Loss:107.1205825805664
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 44100. Loss:96.13584899902344
+Grad step 44200. Loss:79.13836669921875
+Grad step 44300. Loss:92.31010437011719
+Grad step 44400. Loss:84.12358093261719
+Grad step 44500. Loss:103.43408203125
+Grad step 44600. Loss:86.45536804199219
+Grad step 44700. Loss:103.99703216552734
+Grad step 44800. Loss:101.82210540771484
+Grad step 44900. Loss:90.15438842773438
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 45000. Loss:95.36727905273438
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 45100. Loss:72.28712463378906
+Grad step 45200. Loss:112.53115844726562
+Grad step 45300. Loss:109.21620178222656
+Grad step 45400. Loss:112.53675842285156
+Grad step 45500. Loss:89.68431091308594
+Grad step 45600. Loss:95.10294342041016
+Grad step 45700. Loss:93.82391357421875
+Grad step 45800. Loss:93.32539367675781
+Grad step 45900. Loss:75.25048828125
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 46000. Loss:96.49040222167969
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 46100. Loss:108.81591033935547
+Grad step 46200. Loss:89.80350494384766
+Grad step 46300. Loss:95.9090576171875
+Grad step 46400. Loss:90.03782653808594
+Grad step 46500. Loss:102.81412506103516
+Grad step 46600. Loss:92.34405517578125
+Grad step 46700. Loss:82.62547302246094
+Grad step 46800. Loss:105.80768585205078
+Grad step 46900. Loss:83.65982055664062
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 47000. Loss:92.00520324707031
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 47100. Loss:76.14153289794922
+Grad step 47200. Loss:83.78640747070312
+Grad step 47300. Loss:92.30014038085938
+Grad step 47400. Loss:85.67594909667969
+Grad step 47500. Loss:97.47097778320312
+Grad step 47600. Loss:104.19967651367188
+Grad step 47700. Loss:81.68782043457031
+Grad step 47800. Loss:98.1490478515625
+Grad step 47900. Loss:90.80748748779297
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 48000. Loss:117.90264892578125
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 48100. Loss:113.95428466796875
+Grad step 48200. Loss:95.85906982421875
+Grad step 48300. Loss:100.07492065429688
+Grad step 48400. Loss:81.26910400390625
+Grad step 48500. Loss:114.13399505615234
+Grad step 48600. Loss:90.22694396972656
+Grad step 48700. Loss:103.64126586914062
+Grad step 48800. Loss:97.45598602294922
+Grad step 48900. Loss:106.52055358886719
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 49000. Loss:95.87162780761719
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 49100. Loss:111.41224670410156
+Grad step 49200. Loss:106.02824401855469
+Grad step 49300. Loss:81.55390930175781
+Grad step 49400. Loss:106.22808837890625
+Grad step 49500. Loss:95.82759094238281
+Grad step 49600. Loss:101.04417419433594
+Grad step 49700. Loss:80.2275619506836
+Grad step 49800. Loss:90.79649353027344
+Grad step 49900. Loss:77.91571044921875
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 50000. Loss:106.59678649902344
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 50100. Loss:105.66217041015625
+Grad step 50200. Loss:99.92904663085938
+Grad step 50300. Loss:89.54965209960938
+Grad step 50400. Loss:93.34638977050781
+Grad step 50500. Loss:80.74457550048828
+Grad step 50600. Loss:96.89478302001953
+Grad step 50700. Loss:117.44355773925781
+Grad step 50800. Loss:97.32626342773438
+Grad step 50900. Loss:87.13716125488281
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 51000. Loss:87.05844116210938
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 51100. Loss:89.42594146728516
+Grad step 51200. Loss:99.43090057373047
+Grad step 51300. Loss:87.96825408935547
+Grad step 51400. Loss:111.4311294555664
+Grad step 51500. Loss:103.66033935546875
+Grad step 51600. Loss:70.72248840332031
+Grad step 51700. Loss:107.5174560546875
+Grad step 51800. Loss:97.9334487915039
+Grad step 51900. Loss:97.95245361328125
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 52000. Loss:114.55368041992188
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 52100. Loss:77.66596984863281
+Grad step 52200. Loss:90.46678161621094
+Grad step 52300. Loss:96.8553695678711
+Grad step 52400. Loss:90.52595520019531
+Grad step 52500. Loss:96.4351806640625
+Grad step 52600. Loss:102.5208740234375
+Grad step 52700. Loss:122.39865112304688
+Grad step 52800. Loss:94.46428680419922
+Grad step 52900. Loss:90.98746490478516
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 53000. Loss:94.38213348388672
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 53100. Loss:65.06797790527344
+Grad step 53200. Loss:106.08717346191406
+Grad step 53300. Loss:83.42381286621094
+Grad step 53400. Loss:105.13544464111328
+Grad step 53500. Loss:97.24964904785156
+Grad step 53600. Loss:89.99620819091797
+Grad step 53700. Loss:88.98391723632812
+Grad step 53800. Loss:87.92561340332031
+Grad step 53900. Loss:87.06776428222656
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 54000. Loss:97.25951385498047
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 54100. Loss:91.16769409179688
+Grad step 54200. Loss:94.25123596191406
+Grad step 54300. Loss:101.43402099609375
+Grad step 54400. Loss:98.21968841552734
+Grad step 54500. Loss:108.93866729736328
+Grad step 54600. Loss:106.48426818847656
+Grad step 54700. Loss:81.7779541015625
+Grad step 54800. Loss:96.70469665527344
+Grad step 54900. Loss:83.58120727539062
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 55000. Loss:100.49853515625
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 55100. Loss:97.97455596923828
+Grad step 55200. Loss:74.50614929199219
+Grad step 55300. Loss:86.68800354003906
+Grad step 55400. Loss:100.0237045288086
+Grad step 55500. Loss:88.48426055908203
+Grad step 55600. Loss:86.38761901855469
+Grad step 55700. Loss:79.13078308105469
+Grad step 55800. Loss:86.11113739013672
+Grad step 55900. Loss:89.22017669677734
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 56000. Loss:97.33940124511719
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 56100. Loss:69.95328521728516
+Grad step 56200. Loss:89.74153900146484
+Grad step 56300. Loss:95.23587036132812
+Grad step 56400. Loss:99.47605895996094
+Grad step 56500. Loss:108.71098327636719
+Grad step 56600. Loss:81.27701568603516
+Grad step 56700. Loss:86.25675201416016
+Grad step 56800. Loss:90.9867935180664
+Grad step 56900. Loss:89.45743560791016
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 57000. Loss:91.50020599365234
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 57100. Loss:92.68043518066406
+Grad step 57200. Loss:100.3429183959961
+Grad step 57300. Loss:82.69351196289062
+Grad step 57400. Loss:84.8041000366211
+Grad step 57500. Loss:91.25637817382812
+Grad step 57600. Loss:81.88968658447266
+Grad step 57700. Loss:66.83171081542969
+Grad step 57800. Loss:123.37294006347656
+Grad step 57900. Loss:97.8248291015625
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 58000. Loss:78.82362365722656
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 58100. Loss:88.67759704589844
+Grad step 58200. Loss:89.02361297607422
+Grad step 58300. Loss:82.95204162597656
+Grad step 58400. Loss:85.71406555175781
+Grad step 58500. Loss:88.5142593383789
+Grad step 58600. Loss:88.47631072998047
+Grad step 58700. Loss:93.59259033203125
+Grad step 58800. Loss:92.92434692382812
+Grad step 58900. Loss:86.75508880615234
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 59000. Loss:87.02020263671875
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 59100. Loss:92.92599487304688
+Grad step 59200. Loss:83.97200012207031
+Grad step 59300. Loss:78.965087890625
+Grad step 59400. Loss:86.9778060913086
+Grad step 59500. Loss:77.0778579711914
+Grad step 59600. Loss:80.817626953125
+Grad step 59700. Loss:93.64524841308594
+Grad step 59800. Loss:101.82778930664062
+Grad step 59900. Loss:96.10226440429688
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 60000. Loss:92.85662841796875
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 60100. Loss:95.96821594238281
+Grad step 60200. Loss:74.1816635131836
+Grad step 60300. Loss:73.90316772460938
+Grad step 60400. Loss:93.38771057128906
+Grad step 60500. Loss:85.26500701904297
+Grad step 60600. Loss:91.81600952148438
+Grad step 60700. Loss:61.49732971191406
+Grad step 60800. Loss:92.220947265625
+Grad step 60900. Loss:95.71206665039062
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 61000. Loss:56.783199310302734
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 61100. Loss:103.80796813964844
+Grad step 61200. Loss:64.66142272949219
+Grad step 61300. Loss:97.69412994384766
+Grad step 61400. Loss:78.76426696777344
+Grad step 61500. Loss:105.56307983398438
+Grad step 61600. Loss:94.68266296386719
+Grad step 61700. Loss:90.05430603027344
+Grad step 61800. Loss:84.92515563964844
+Grad step 61900. Loss:71.75762939453125
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 62000. Loss:82.80448913574219
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 62100. Loss:98.3088607788086
+Grad step 62200. Loss:103.30572509765625
+Grad step 62300. Loss:96.99806213378906
+Grad step 62400. Loss:91.53994750976562
+Grad step 62500. Loss:87.46002960205078
+Grad step 62600. Loss:73.0006103515625
+Grad step 62700. Loss:98.03245544433594
+Grad step 62800. Loss:84.04841613769531
+Grad step 62900. Loss:98.13162994384766
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 63000. Loss:107.03253936767578
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 63100. Loss:89.40145111083984
+Grad step 63200. Loss:87.96473693847656
+Grad step 63300. Loss:85.23709106445312
+Grad step 63400. Loss:106.25765991210938
+Grad step 63500. Loss:95.34796142578125
+Grad step 63600. Loss:88.59722900390625
+Grad step 63700. Loss:71.8935317993164
+Grad step 63800. Loss:107.3963623046875
+Grad step 63900. Loss:83.62648010253906
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 64000. Loss:117.53500366210938
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 64100. Loss:83.68698120117188
+Grad step 64200. Loss:78.66032409667969
+Grad step 64300. Loss:104.49192810058594
+Grad step 64400. Loss:78.59901428222656
+Grad step 64500. Loss:92.44085693359375
+Grad step 64600. Loss:95.0500717163086
+Grad step 64700. Loss:83.17024230957031
+Grad step 64800. Loss:99.13642883300781
+Grad step 64900. Loss:76.77837371826172
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 65000. Loss:82.91950988769531
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 65100. Loss:90.463134765625
+Grad step 65200. Loss:103.0064697265625
+Grad step 65300. Loss:89.88664245605469
+Grad step 65400. Loss:103.50899505615234
+Grad step 65500. Loss:83.63876342773438
+Grad step 65600. Loss:74.60712432861328
+Grad step 65700. Loss:74.18525695800781
+Grad step 65800. Loss:105.23237609863281
+Grad step 65900. Loss:87.98309326171875
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 66000. Loss:61.90422058105469
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 66100. Loss:79.48664855957031
+Grad step 66200. Loss:100.83558654785156
+Grad step 66300. Loss:79.83491516113281
+Grad step 66400. Loss:80.8173828125
+Grad step 66500. Loss:85.1429214477539
+Grad step 66600. Loss:91.30726623535156
+Grad step 66700. Loss:77.16522979736328
+Grad step 66800. Loss:99.00497436523438
+Grad step 66900. Loss:111.26622009277344
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 67000. Loss:94.29586029052734
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 67100. Loss:98.85724639892578
+Grad step 67200. Loss:74.61034393310547
+Grad step 67300. Loss:84.09259033203125
+Grad step 67400. Loss:80.59825897216797
+Grad step 67500. Loss:91.56962585449219
+Grad step 67600. Loss:85.2502670288086
+Grad step 67700. Loss:73.85538482666016
+Grad step 67800. Loss:110.66851043701172
+Grad step 67900. Loss:62.67741394042969
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 68000. Loss:96.52940368652344
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 68100. Loss:87.62867736816406
+Grad step 68200. Loss:79.03003692626953
+Grad step 68300. Loss:84.13483428955078
+Grad step 68400. Loss:93.25764465332031
+Grad step 68500. Loss:94.75904846191406
+Grad step 68600. Loss:75.0777359008789
+Grad step 68700. Loss:90.71783447265625
+Grad step 68800. Loss:80.00352478027344
+Grad step 68900. Loss:93.96955108642578
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 69000. Loss:81.90823364257812
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 69100. Loss:85.72673034667969
+Grad step 69200. Loss:93.90653228759766
+Grad step 69300. Loss:74.9715576171875
+Grad step 69400. Loss:93.81031036376953
+Grad step 69500. Loss:83.80851745605469
+Grad step 69600. Loss:90.58279418945312
+Grad step 69700. Loss:77.03598022460938
+Grad step 69800. Loss:85.02445983886719
+Grad step 69900. Loss:90.41587829589844
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 70000. Loss:93.18739318847656
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 70100. Loss:89.41389465332031
+Grad step 70200. Loss:99.3179931640625
+Grad step 70300. Loss:84.42257690429688
+Grad step 70400. Loss:79.5931167602539
+Grad step 70500. Loss:97.7386245727539
+Grad step 70600. Loss:101.32398986816406
+Grad step 70700. Loss:104.77600860595703
+Grad step 70800. Loss:99.46369171142578
+Grad step 70900. Loss:91.6842269897461
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 71000. Loss:81.09638214111328
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 71100. Loss:94.8111801147461
+Grad step 71200. Loss:89.4276123046875
+Grad step 71300. Loss:88.63310241699219
+Grad step 71400. Loss:99.76060485839844
+Grad step 71500. Loss:80.62493133544922
+Grad step 71600. Loss:85.78878784179688
+Grad step 71700. Loss:92.741455078125
+Grad step 71800. Loss:82.77897644042969
+Grad step 71900. Loss:91.11799621582031
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 72000. Loss:92.29519653320312
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 72100. Loss:82.41632080078125
+Grad step 72200. Loss:95.30015563964844
+Grad step 72300. Loss:78.49909210205078
+Grad step 72400. Loss:88.62643432617188
+Grad step 72500. Loss:79.64471435546875
+Grad step 72600. Loss:86.12861633300781
+Grad step 72700. Loss:87.9700927734375
+Grad step 72800. Loss:68.71702575683594
+Grad step 72900. Loss:88.75929260253906
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 73000. Loss:87.90286254882812
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 73100. Loss:86.59599304199219
+Grad step 73200. Loss:115.16606140136719
+Grad step 73300. Loss:84.85922241210938
+Grad step 73400. Loss:80.75669860839844
+Grad step 73500. Loss:79.25970458984375
+Grad step 73600. Loss:72.12582397460938
+Grad step 73700. Loss:117.38076782226562
+Grad step 73800. Loss:92.8166732788086
+Grad step 73900. Loss:72.00987243652344
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 74000. Loss:96.3334732055664
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 74100. Loss:86.43022155761719
+Grad step 74200. Loss:84.24708557128906
+Grad step 74300. Loss:94.89671325683594
+Grad step 74400. Loss:84.24830627441406
+Grad step 74500. Loss:83.89747619628906
+Grad step 74600. Loss:81.38118743896484
+Grad step 74700. Loss:77.58985137939453
+Grad step 74800. Loss:93.18501281738281
+Grad step 74900. Loss:80.81314849853516
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 75000. Loss:87.6109619140625
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 75100. Loss:96.0416259765625
+Grad step 75200. Loss:75.93083953857422
+Grad step 75300. Loss:82.32962036132812
+Grad step 75400. Loss:97.40385437011719
+Grad step 75500. Loss:88.30998229980469
+Grad step 75600. Loss:97.76643371582031
+Grad step 75700. Loss:89.3228759765625
+Grad step 75800. Loss:74.08816528320312
+Grad step 75900. Loss:76.64348602294922
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 76000. Loss:103.10023498535156
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 76100. Loss:93.50302124023438
+Grad step 76200. Loss:81.28776550292969
+Grad step 76300. Loss:77.71871185302734
+Grad step 76400. Loss:88.59130096435547
+Grad step 76500. Loss:83.319091796875
+Grad step 76600. Loss:93.50978088378906
+Grad step 76700. Loss:100.46946716308594
+Grad step 76800. Loss:74.62568664550781
+Grad step 76900. Loss:74.21601104736328
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 77000. Loss:68.95309448242188
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 77100. Loss:79.97969055175781
+Grad step 77200. Loss:76.55198669433594
+Grad step 77300. Loss:73.60018920898438
+Grad step 77400. Loss:83.85865783691406
+Grad step 77500. Loss:96.6700210571289
+Grad step 77600. Loss:90.88951873779297
+Grad step 77700. Loss:83.30448913574219
+Grad step 77800. Loss:81.4775390625
+Grad step 77900. Loss:81.8790512084961
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 78000. Loss:86.04942321777344
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 78100. Loss:103.10243225097656
+Grad step 78200. Loss:82.63751220703125
+Grad step 78300. Loss:82.01091003417969
+Grad step 78400. Loss:82.85107421875
+Grad step 78500. Loss:79.97805786132812
+Grad step 78600. Loss:74.92644500732422
+Grad step 78700. Loss:86.41438293457031
+Grad step 78800. Loss:83.96913146972656
+Grad step 78900. Loss:114.662841796875
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 79000. Loss:74.95164489746094
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 79100. Loss:86.04716491699219
+Grad step 79200. Loss:75.19463348388672
+Grad step 79300. Loss:105.48863220214844
+Grad step 79400. Loss:67.21190643310547
+Grad step 79500. Loss:97.67584228515625
+Grad step 79600. Loss:94.47773742675781
+Grad step 79700. Loss:96.47090148925781
+Grad step 79800. Loss:85.2886962890625
+Grad step 79900. Loss:79.18876647949219
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 80000. Loss:71.65911865234375
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 80100. Loss:94.71586608886719
+Grad step 80200. Loss:97.84761810302734
+Grad step 80300. Loss:72.67633056640625
+Grad step 80400. Loss:86.53720092773438
+Grad step 80500. Loss:102.26429748535156
+Grad step 80600. Loss:70.8292236328125
+Grad step 80700. Loss:69.0371322631836
+Grad step 80800. Loss:86.93606567382812
+Grad step 80900. Loss:72.55143737792969
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 81000. Loss:79.81595611572266
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 81100. Loss:103.13778686523438
+Grad step 81200. Loss:81.75022888183594
+Grad step 81300. Loss:91.9005355834961
+Grad step 81400. Loss:84.14778900146484
+Grad step 81500. Loss:94.92649841308594
+Grad step 81600. Loss:75.44600677490234
+Grad step 81700. Loss:89.5135498046875
+Grad step 81800. Loss:68.87093353271484
+Grad step 81900. Loss:82.01556396484375
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 82000. Loss:80.54347229003906
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 82100. Loss:74.012451171875
+Grad step 82200. Loss:83.98760223388672
+Grad step 82300. Loss:82.40247344970703
+Grad step 82400. Loss:110.60049438476562
+Grad step 82500. Loss:122.13448333740234
+Grad step 82600. Loss:82.84163665771484
+Grad step 82700. Loss:90.16877746582031
+Grad step 82800. Loss:74.19355773925781
+Grad step 82900. Loss:93.50226593017578
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 83000. Loss:85.38746643066406
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 83100. Loss:73.42973327636719
+Grad step 83200. Loss:64.99742889404297
+Grad step 83300. Loss:79.12096405029297
+Grad step 83400. Loss:63.768070220947266
+Grad step 83500. Loss:75.10018920898438
+Grad step 83600. Loss:70.16783905029297
+Grad step 83700. Loss:87.96295166015625
+Grad step 83800. Loss:102.48446655273438
+Grad step 83900. Loss:84.57511901855469
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 84000. Loss:77.84976196289062
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 84100. Loss:92.17857360839844
+Grad step 84200. Loss:92.47938537597656
+Grad step 84300. Loss:79.09081268310547
+Grad step 84400. Loss:95.71070098876953
+Grad step 84500. Loss:86.8498306274414
+Grad step 84600. Loss:81.80201721191406
+Grad step 84700. Loss:69.89763641357422
+Grad step 84800. Loss:83.45529174804688
+Grad step 84900. Loss:84.24012756347656
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 85000. Loss:91.70829010009766
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 85100. Loss:87.94357299804688
+Grad step 85200. Loss:68.2893295288086
+Grad step 85300. Loss:94.46891784667969
+Grad step 85400. Loss:75.98726654052734
+Grad step 85500. Loss:96.19828033447266
+Grad step 85600. Loss:89.44924926757812
+Grad step 85700. Loss:76.04264068603516
+Grad step 85800. Loss:71.45064544677734
+Grad step 85900. Loss:78.98564147949219
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 86000. Loss:94.62422180175781
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 86100. Loss:89.18881225585938
+Grad step 86200. Loss:83.88298797607422
+Grad step 86300. Loss:95.81914520263672
+Grad step 86400. Loss:97.94863891601562
+Grad step 86500. Loss:80.7198257446289
+Grad step 86600. Loss:82.73011016845703
+Grad step 86700. Loss:92.11065673828125
+Grad step 86800. Loss:85.84769439697266
+Grad step 86900. Loss:74.69393157958984
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 87000. Loss:86.96971130371094
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 87100. Loss:95.14947509765625
+Grad step 87200. Loss:98.37633514404297
+Grad step 87300. Loss:72.03901672363281
+Grad step 87400. Loss:100.8151626586914
+Grad step 87500. Loss:83.03141784667969
+Grad step 87600. Loss:89.02398681640625
+Grad step 87700. Loss:72.69354248046875
+Grad step 87800. Loss:88.84046936035156
+Grad step 87900. Loss:65.64151000976562
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 88000. Loss:87.72592163085938
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 88100. Loss:73.27677917480469
+Grad step 88200. Loss:83.60981750488281
+Grad step 88300. Loss:76.62568664550781
+Grad step 88400. Loss:82.41656494140625
+Grad step 88500. Loss:66.23823547363281
+Grad step 88600. Loss:76.15731811523438
+Grad step 88700. Loss:85.23469543457031
+Grad step 88800. Loss:85.15272521972656
+Grad step 88900. Loss:73.71237182617188
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 89000. Loss:72.50047302246094
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 89100. Loss:75.13546752929688
+Grad step 89200. Loss:85.78977966308594
+Grad step 89300. Loss:84.82938385009766
+Grad step 89400. Loss:75.53822326660156
+Grad step 89500. Loss:91.27290344238281
+Grad step 89600. Loss:73.71421813964844
+Grad step 89700. Loss:70.38391876220703
+Grad step 89800. Loss:83.70231628417969
+Grad step 89900. Loss:86.59916687011719
+SAMPLING
+sampling for diffusion function: g_sigma
+sampling for diffusion function: g_other
+Grad step 90000. Loss:78.10816955566406
+saving!
+saved ckpt at  ../../checkpoints/latest.pt
+Grad step 90100. Loss:82.32366180419922
+Grad step 90200. Loss:84.30370330810547
+Grad step 90300. Loss:84.94741821289062
+Grad step 90400. Loss:73.604248046875
+Grad step 90500. Loss:88.77685546875
+Grad step 90600. Loss:99.3538818359375
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+slurmstepd: error: *** STEP 976096.0 ON r6i4n4 CANCELLED AT 2026-03-13T06:13:16 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 976096 ON r6i4n4 CANCELLED AT 2026-03-13T06:13:16 DUE TO TIME LIMIT ***

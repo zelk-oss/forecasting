@@ -81,8 +81,8 @@ class Trainer:
             'optimizer_state_dict': self.optimizer.state_dict(),
             'step': self.step,
         }
-        maybe_create_dir('../../checkpoints')
-        path = f"../../checkpoints/latest.pt"
+        maybe_create_dir('./ckpts')
+        path = f"./ckpts/latest.pt"
         torch.save(D, path)
         print("saved ckpt at ", path)
 

@@ -1,0 +1,69 @@
+Loading pytorch-gpu/py3/2.3.0
+  Loading requirement: cuda/12.2.0 nccl/2.19.3-1-cuda cudnn/8.9.5.30-cuda
+    gcc/10.1.0 openmpi/4.1.5-cuda intel-mkl/2020.4 magma/2.7.2-cuda sox/14.4.2
+    hdf5/1.12.0-mpi-cuda libjpeg-turbo/2.1.3 ffmpeg/6.1.1
++ mkdir -p outputs
++ srun python test.py --ckpt ./ckpts/latest.pt --data ../dataset/test_128_dt10.pt --n_samples 16 --n_ensemble 6 --n_lag 5 --n_steps 200 --device cuda:0
+Device: cuda:0
+Checkpoint step: 90000  |  tensors: 277
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 12,212,625
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 17,198,481
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 34,444,689
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 98,035,089
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 23,478,929
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 41,970,321
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 108,051,089
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 64,296,081
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 135,357,585
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 219,068,561
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 29,988,753
+NOT USING CLASSES IN UNET
+Num params in main arch for drift is 29,988,753
+dim_mults=(1, 2, 2, 2) | params: 29.99M
+pixel_norm: 0.2611
+
+[1/3] Short-term evaluation
+  sample 1/16  sample 2/16  sample 3/16  sample 4/16  sample 5/16  sample 6/16  sample 7/16  sample 8/16  sample 9/16  sample 10/16  sample 11/16  sample 12/16  sample 13/16  sample 14/16  sample 15/16  sample 16/16
+  MAE  0.4239 ± 0.0140
+  RMSE 0.5334 ± 0.0167
+
+[2/3] Long-term rollout
+  rollout 1/8  rollout 2/8  rollout 3/8  rollout 4/8  rollout 5/8  rollout 6/8  rollout 7/8  rollout 8/8
+[3/3] Ensemble
+
+Done. Results saved to ./test_out/
+{
+  "mae": {
+    "mean": 0.4239038825035095,
+    "std": 0.01404135674238205
+  },
+  "rmse": {
+    "mean": 0.5334299206733704,
+    "std": 0.01665881834924221
+  },
+  "spread_vs_lag": {
+    "1": 0.3896315097808838,
+    "2": 0.4212401807308197,
+    "3": 0.43097689747810364,
+    "4": 0.4294400215148926,
+    "5": 0.4354066848754883
+  },
+  "rmse_vs_lag": {
+    "1": 0.34068402647972107,
+    "2": 0.3268718719482422,
+    "3": 0.31996625661849976,
+    "4": 0.3177490532398224,
+    "5": 0.32767578959465027
+  }
+}
